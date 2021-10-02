@@ -2,10 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def index(request):
+def contact(request):
     '''A view to return the index page'''
 
     page = {
-        'page': 'home',
+        'page': 'contact',
     }
-    return render(request, 'home/index.html', page)
+    return render(request, 'contact/contact.html', page)
