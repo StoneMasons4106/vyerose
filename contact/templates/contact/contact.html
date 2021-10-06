@@ -26,7 +26,7 @@
       <div>
         <iframe
           style="border: 0; width: 100%; height: 270px"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23339.9517027349!2d-78.9015170214617!3d43.009988996888325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d36c5356a46d21%3A0x701588fcfb94c4d0!2sTonawanda%2C%20NY%2014150!5e0!3m2!1sen!2sus!4v1633198222545!5m2!1sen!2sus"
+          src="{{google_maps_link}}"
           frameborder="0"
           allowfullscreen
         ></iframe>
@@ -38,19 +38,24 @@
             <div class="address">
               <i class="bi bi-geo-alt"></i>
               <h4>Location:</h4>
-              <p>Tonawanda, NY 14150</p>
+              {% if location_street_address %}
+              <p>{{location_street_address}}</p>
+              <p>{{location_town_state_zip}}</p>
+              {% else %}
+              <p>{{location_town_state_zip}}</p>
+              {% endif %}
             </div>
 
             <div class="email">
               <i class="bi bi-envelope"></i>
               <h4>Email:</h4>
-              <p>vyerosecrafts@gmail.com</p>
+              <p>{{email}}</p>
             </div>
 
             <div class="phone">
               <i class="bi bi-phone"></i>
               <h4>Call:</h4>
-              <p>+1 716 525 8283</p>
+              <p>{{phone}}</p>
             </div>
           </div>
         </div>
