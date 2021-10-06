@@ -1126,10 +1126,10 @@ section {
   font-size: 15;
   font-style: italic;
   padding: 0;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
 #footer .social-links {
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
 #footer .social-links a {
   font-size: 18px;
@@ -1151,7 +1151,7 @@ section {
   text-decoration: none;
 }
 #footer .copyright {
-  margin: 0 0 5px 0;
+  margin: 0 0 1px 0;
 }
 #footer .credits {
   font-size: 13px;

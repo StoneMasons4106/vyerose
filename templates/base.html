@@ -76,8 +76,16 @@
           </li>
           <li class="dropdown"><a href="#"><span>My Account</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Register</a></li>
+              {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                  <li><a href="#" class="dropdown-item">Product Management</a></li>
+                {% endif %}
+                <li><a href="#" class="dropdown-item">My Account</a></li>
+                <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
+                <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
+              {% endif %}
             </ul>          
           </li>
           <li><a href="contact.html"><i class="fas fa-shopping-cart"></i></a></li>
@@ -94,7 +102,7 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <img src="{{ MEDIA_URL }}vyerosesmall.png" alt="" class="img-fluid">
+      <img src="{{ MEDIA_URL }}vyerosesmall.png" alt="" class="img-fluid logo-small">
       <p>Find us on Instagram</p>
       <div class="social-links">
         <a href="https://instagram.com/vye_rose/" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
