@@ -4,7 +4,7 @@ from .models import ContactField
 # Create your views here.
 
 def contact(request):
-    '''A view to return the index page'''
+    '''A view to return the contact page'''
 
     contact_fields = ContactField.objects.values()
 
@@ -16,4 +16,5 @@ def contact(request):
         'email': contact_fields[0]["email"],
         'phone': contact_fields[0]["phone"],
     }
+    
     return render(request, 'contact/contact.html', context)
