@@ -39,6 +39,12 @@
     color: white;
 }
 
+.sort-select-wrapper {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
 
 /* Allauth */
 
@@ -130,7 +136,7 @@
     position: fixed;
     top: 72px;
     right: 15px;
-    z-index: 100;
+    z-index: 100000;
 }
 
 .custom-toast {

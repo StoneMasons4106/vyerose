@@ -50,6 +50,7 @@ def all_products(request):
     current_sorting = f'{sort}_{direction}'
 
     context = {
+        'page': 'products',
         'products': products,
         'search_term': query,
         'current_categories': categories,
@@ -65,6 +66,7 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     context = {
+        'page': 'products',
         'product': product,
     }
 
@@ -91,6 +93,7 @@ def add_product(request):
         
     template = 'products/add_product.html'
     context = {
+        'page': 'products',
         'form': form,
     }
 
@@ -119,6 +122,7 @@ def edit_product(request, product_id):
 
     template = 'products/edit_product.html'
     context = {
+        'page': 'products',
         'form': form,
         'product': product,
     }
