@@ -1,0 +1,119 @@
+[
+    {
+      "pk": 1,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001340155",
+        "name": "Test Product One",
+        "description": "Test Product One",
+        "price": 0.00,
+        "category": 1,
+        "image": "Test_Product_One.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2017/10/19/11/00/pendant-2867205_960_720.jpg"
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001600425",
+        "name": "Test Product Two",
+        "description": "Test Product Two",
+        "price": 0.00,
+        "category": 3,
+        "image": "Test_Product_Two.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2016/09/15/07/05/ring-1671094_960_720.jpg"
+      }
+    },
+    {
+      "pk": 3,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001730010",
+        "name": "Test Product Three",
+        "description": "Test Product Three",
+        "price": 0.00,
+        "category": 2,
+        "image": "Test_Product_Three.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2017/08/06/17/13/diamond-2594307_960_720.jpg"
+      }
+    },
+    {
+      "pk": 4,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5001890157",
+        "name": "Test Product Four",
+        "description": "Test Product Four",
+        "price": 0.00,
+        "category": 2,
+        "image": "Test_Product_Four.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2017/08/02/14/22/ring-2571761_960_720.jpg"
+      }
+    },
+    {
+      "pk": 5,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002111605",
+        "name": "Test Product Five",
+        "description": "Test Product Five",
+        "price": 0.00,
+        "category": 3,
+        "image": "Test_Product_Five.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2015/05/26/09/48/chain-784422_960_720.jpg"
+      }
+    },
+    {
+      "pk": 6,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002260206",
+        "name": "Test Product Six",
+        "description": "Test Product Six",
+        "price": 0.00,
+        "category": 1,
+        "image": "Test_Product_Six.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2017/11/13/11/48/heart-2945406_960_720.jpg"
+      }
+    },
+    {
+      "pk": 7,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002440521",
+        "name": "Test Product Seven",
+        "description": "Test Product Seven",
+        "price": 0.00,
+        "category": 1,
+        "image": "Test_Product_Seven.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2017/03/29/23/38/amethyst-2186842_960_720.jpg"
+      }
+    },
+    {
+      "pk": 8,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002601115",
+        "name": "Test Product Eight",
+        "description": "Test Product Eight",
+        "price": 0.00,
+        "category": 3,
+        "image": "Test_Product_Eight.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2016/02/02/15/54/jewellery-1175533_960_720.jpg"
+      }
+    },
+    {
+      "pk": 9,
+      "model": "products.product",
+      "fields": {
+        "sku": "pp5002690715",
+        "name": "Test Product Nine",
+        "description": "Test Product Nine",
+        "price": 0.00,
+        "category": 2,
+        "image": "Test_Product_Nine.jpg",
+        "image_url": "https://cdn.pixabay.com/photo/2015/06/14/19/21/beads-809385_960_720.jpg"
+      }
+    }
+]

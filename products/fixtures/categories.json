@@ -1,0 +1,17 @@
+[
+    {
+      "pk": 1,
+      "model": "products.category",
+      "fields": { "name": "test_category_one", "friendly_name": "Category One" }
+    },
+    {
+      "pk": 2,
+      "model": "products.category",
+      "fields": { "name": "test_category_two", "friendly_name": "Category Two" }
+    },
+    {
+      "pk": 3,
+      "model": "products.category",
+      "fields": { "name": "test_category_three", "friendly_name": "Category Three" }
+    }
+]
