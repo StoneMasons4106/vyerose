@@ -56,3 +56,15 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def change_password(request):
+    template = 'profiles/change_password.html'
+    messages.info(request, f'You are about to change your password!')
+    context = {
+        'page': 'profile',
+        'from_profile': True,
+    }
+
+    return render(request, template, context)
