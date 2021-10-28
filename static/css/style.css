@@ -49,6 +49,12 @@
     text-align: center;
 }
 
+/* Product Detail - products/templates/products/product_detail.html */
+
+.product-container {
+    margin-bottom: 50px;
+}
+
 /* Allauth */
 
 .allauth-form-inner-content {

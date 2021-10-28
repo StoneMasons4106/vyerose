@@ -79,7 +79,7 @@
             <ul>
               {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                  <li><a href="#" class="dropdown-item">Product Management</a></li>
+                  <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
                 {% endif %}
                 <li><a href="{% url 'me' %}" class="dropdown-item">My Account</a></li>
                 <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
@@ -158,6 +158,9 @@
 
   <!-- Quantity Input Script -->
   <script src="{% static 'js/quantity_input_script.js' %}"></script>
+
+  <!-- New Image JS -->
+  <script src="{% static 'js/new_image.js' %}"></script>
 
 </body>
 
