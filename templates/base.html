@@ -67,9 +67,27 @@
           <li><a href="{% url 'contact' %}">Contact</a></li>
           {% endif %}
           {% if page == "products" %}
-          <li><a class="active" href="{% url 'products' %}">Products</a></li>
+            {% if request.user.is_superuser %}
+            <li class="dropdown"><a href="#" class="active"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
+                <li><a href="{% url 'products' %}">All Products</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <li><a href="{% url 'products' %}" class="active">Products</a></li>
+            {% endif %}
           {% else %}
-          <li><a href="{% url 'products' %}">Products</a></li>
+            {% if request.user.is_superuser %}
+            <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
+                <li><a href="{% url 'products' %}">All Products</a></li>
+              </ul>
+            </li>
+            {% else %}
+            <li><a href="{% url 'products' %}">Products</a></li>
+            {% endif %}
           {% endif %}
           {% if page == "profile" %}
           <li class="dropdown"><a href="#" class="active"><span>My Account</span> <i class="bi bi-chevron-down"></i></a>
@@ -78,9 +96,6 @@
           {% endif %}
             <ul>
               {% if request.user.is_authenticated %}
-                {% if request.user.is_superuser %}
-                  <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
-                {% endif %}
                 <li><a href="{% url 'me' %}" class="dropdown-item">My Account</a></li>
                 <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
               {% else %}

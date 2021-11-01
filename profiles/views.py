@@ -26,9 +26,32 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
         form_two = UserForm(instance=user)
+
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
+    context = {
+        'page': 'profile',
+        'profile': profile,
+        'user': user,
+        'orders': orders,
+        'on_profile_page': True
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_profile(request):
+    """ Display the user's profile. """
+    profile = get_object_or_404(UserProfile, user=request.user)
+    user = get_object_or_404(User, username=request.user)
+
+    form = UserProfileForm(instance=profile)
+    form_two = UserForm(instance=user)
+    orders = profile.orders.all()
+
+    template = 'profiles/edit_profile.html'
     context = {
         'page': 'profile',
         'form': form,
