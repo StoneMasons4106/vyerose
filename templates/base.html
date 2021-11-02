@@ -104,7 +104,7 @@
               {% endif %}
             </ul>          
           </li>
-          <li><a href="contact.html"><i class="fas fa-shopping-cart"></i></a></li>
+          <li><a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i></a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -176,6 +176,9 @@
 
   <!-- New Image JS -->
   <script src="{% static 'js/new_image.js' %}"></script>
+
+  <!-- Cart JS -->
+  <script src="{% static 'js/cart.js' %}"></script>
 
 </body>
 
