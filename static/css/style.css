@@ -124,6 +124,7 @@
 #id_email,
 #id_email2,
 #id_username,
+#id_oldpassword,
 #id_password1,
 #id_password2,
 #div_id_remember {
@@ -204,6 +205,14 @@
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+
+/* Breadcrumbs */
+
+.breadcrumbs {
+    margin-top: 109px !important;
+    width: 100%;
 }
 
 

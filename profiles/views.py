@@ -51,6 +51,7 @@ def edit_profile(request):
     form_two = UserForm(instance=user)
     orders = profile.orders.all()
 
+    messages.info(request, f'You are now editing your profile.')
     template = 'profiles/edit_profile.html'
     context = {
         'page': 'profile',
@@ -75,18 +76,6 @@ def order_history(request, order_number):
     context = {
         'page': 'profile',
         'order': order,
-        'from_profile': True,
-    }
-
-    return render(request, template, context)
-
-
-@login_required
-def change_password(request):
-    template = 'profiles/change_password.html'
-    messages.info(request, f'You are about to change your password!')
-    context = {
-        'page': 'profile',
         'from_profile': True,
     }
 
