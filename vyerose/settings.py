@@ -29,7 +29,10 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['127.0.0.1', 'vyerose.herokuapp.com']
+if DEBUG:
+    ALLOWED_HOSTS = ['127.0.0.1', os.environ.get("HEROKU_HOSTNAME")]
+else:
+    ALLOWED_HOSTS = [os.environ.get("HEROKU_HOSTNAME")]
 
 # Application definition
 
