@@ -15,7 +15,7 @@ def cart_contents(request):
         jsonready_cart = cart.cart.replace("'", '"')
         user_cart = json.loads(jsonready_cart)
     except:
-        user_cart = {}
+        user_cart = request.session.get('cart', {})
 
     for item_id, item_data in user_cart.items():
         if isinstance(item_data, int):

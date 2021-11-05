@@ -22,33 +22,50 @@ def add_to_cart(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    try:
-        cart = get_object_or_404(UserCart, user=request.user)
-        jsonready_cart = cart.cart.replace("'", '"')
-        user_cart = json.loads(jsonready_cart)
+    
+    if request.user.username:
+        
+        try:
+            cart = get_object_or_404(UserCart, user=request.user)
+            jsonready_cart = cart.cart.replace("'", '"')
+            user_cart = json.loads(jsonready_cart)
 
-        if item_id in user_cart.keys():
-            user_cart[item_id] += quantity
-            cart.cart = user_cart
-            cart.save()
-            messages.success(request, f'Updated {product.name} quantity to {quantity}')
-        else:
+            if item_id in user_cart.keys():
+                user_cart[item_id] += quantity
+                cart.cart = user_cart
+                cart.save()
+                messages.success(request, f'Updated {product.name} quantity to {quantity}')
+            else:
+                user_cart[item_id] = quantity
+                cart.cart = user_cart
+                cart.save()
+                messages.success(request, f'Added {product.name} to your cart')
+        
+        except:
+            user_cart = {}
+
             user_cart[item_id] = quantity
+            cart = UserCart(user=request.user)
             cart.cart = user_cart
             cart.save()
             messages.success(request, f'Added {product.name} to your cart')
+
+
+        request.session['cart'] = cart.cart
     
-    except:
-        user_cart = {}
+    else:
+        
+        cart = request.session.get('cart', {})
+        
+        if item_id in list(cart.keys()):
+            cart[item_id] += quantity
+            messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}')
+        else:
+            cart[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your cart')
 
-        user_cart[item_id] = quantity
-        cart = UserCart(user=request.user)
-        cart.cart = user_cart
-        cart.save()
-        messages.success(request, f'Added {product.name} to your cart')
-
-
-    request.session['cart'] = cart.cart
+        request.session['cart'] = cart
+    
     return redirect(redirect_url)
     
 
@@ -57,23 +74,40 @@ def adjust_cart(request, item_id):
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
-    cart = get_object_or_404(UserCart, user=request.user)
     
-    if quantity > 0:
-        jsonready_cart = cart.cart.replace("'", '"')
-        json_cart = json.loads(jsonready_cart)
-        json_cart[item_id] = quantity
-        cart.cart = json_cart
-        cart.save()
-        messages.success(request, f'Updated {product.name} quantity to {quantity}')
-    else:
-        json_cart = cart.cart.replace("'", '"')
-        json.loads(json_cart).pop(item_id)
-        cart.cart = json_cart
-        cart.save()
-        messages.success(request, f'Removed {product.name} from your cart')
+    if request.user.username:
+        
+        cart = get_object_or_404(UserCart, user=request.user)
+        
+        if quantity > 0:
+            jsonready_cart = cart.cart.replace("'", '"')
+            json_cart = json.loads(jsonready_cart)
+            json_cart[item_id] = quantity
+            cart.cart = json_cart
+            cart.save()
+            messages.success(request, f'Updated {product.name} quantity to {quantity}')
+        else:
+            json_cart = cart.cart.replace("'", '"')
+            json.loads(json_cart).pop(item_id)
+            cart.cart = json_cart
+            cart.save()
+            messages.success(request, f'Removed {product.name} from your cart')
 
-    request.session['cart'] = json_cart
+        request.session['cart'] = json_cart
+
+    else:
+
+        cart = request.session.get('cart', {})
+
+        if quantity > 0:
+                cart[item_id] = quantity
+                messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}')
+        else:
+            cart.pop(item_id)
+            messages.success(request, f'Removed {product.name} from your cart')
+
+        request.session['cart'] = cart
+    
     return redirect(reverse('view_cart'))
 
 
