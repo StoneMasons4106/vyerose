@@ -2,15 +2,22 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from .models import UserCart
+import json
 
 def cart_contents(request):
 
     cart_items = []
     total = 0
     product_count = 0
-    cart = request.session.get('cart', {})
+    try:
+        cart = get_object_or_404(UserCart, user=request.user)
+        jsonready_cart = cart.cart.replace("'", '"')
+        user_cart = json.loads(jsonready_cart)
+    except:
+        user_cart = {}
 
-    for item_id, item_data in cart.items():
+    for item_id, item_data in user_cart.items():
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
             total += item_data * product.price
