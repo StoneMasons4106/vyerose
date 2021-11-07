@@ -115,21 +115,39 @@ def remove_from_cart(request, item_id):
     """Remove the item from the shopping cart"""
 
     if request.method == 'POST':
+
+        if request.user.username:
         
-        try:
-            product = get_object_or_404(Product, pk=item_id)
-            cart = get_object_or_404(UserCart, user=request.user)
+            try:
+                product = get_object_or_404(Product, pk=item_id)
+                cart = get_object_or_404(UserCart, user=request.user)
 
-            jsonready_cart = cart.cart.replace("'", '"')
-            json_cart = json.loads(jsonready_cart)
-            json_cart.pop(item_id)
-            cart.cart = json_cart
-            cart.save()
-            messages.success(request, f'Removed {product.name} from your cart')
+                jsonready_cart = cart.cart.replace("'", '"')
+                json_cart = json.loads(jsonready_cart)
+                json_cart.pop(item_id)
+                cart.cart = json_cart
+                cart.save()
+                messages.success(request, f'Removed {product.name} from your cart')
 
-            request.session['cart'] = json_cart
-            return HttpResponse(status=200)
+                request.session['cart'] = json_cart
+                return HttpResponse(status=200)
 
-        except Exception as e:
-            messages.error(request, f'Error removing item: {e}')
-            return HttpResponse(status=500)
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
+
+        else:
+
+            try:
+                product = get_object_or_404(Product, pk=item_id)
+                cart = request.session.get('cart', {})
+
+                cart.pop(item_id)
+                messages.success(request, f'Removed {product.name} from your cart')
+
+                request.session['cart'] = cart
+                return HttpResponse(status=200)
+
+            except Exception as e:
+                messages.error(request, f'Error removing item: {e}')
+                return HttpResponse(status=500)
