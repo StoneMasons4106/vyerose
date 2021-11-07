@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from products.models import Product
+from products.models import Product, Category
 from .models import UserCart
 import json
 
@@ -40,12 +40,14 @@ def cart_contents(request):
                 })
     
     grand_total = total
+    categories = Category.objects.values()
     
     context = {
         'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
         'grand_total': grand_total,
+        'categories': categories,
     }
 
     return context
