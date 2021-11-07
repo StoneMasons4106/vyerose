@@ -216,6 +216,13 @@
 }
 
 
+/* Cart */
+
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
 /* Media Queries */
 
 @media (min-height: 775px) {
