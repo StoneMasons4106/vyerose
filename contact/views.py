@@ -33,7 +33,7 @@ def send_message(request):
         user_email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        to_email = 'vyerosecrafts@gmail.com'
+        to_email = ContactField.objects.values()[0]["email"]
 
         email = EmailMessage(f'You have a new message from {name}', 
         f'You have a new email from { name }!\n\nEmail: { user_email }\n\nSubject: { subject }\n\nMessage: { message }', 
