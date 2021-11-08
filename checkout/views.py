@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-
+from cart.models import UserCart
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
@@ -32,7 +32,10 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        cart = request.session.get('cart', {})
+        try:
+            cart = get_object_or_404(UserCart, user=request.user)
+        except:
+            cart = request.session.get('cart', {})
 
         form_data = {
             'full_name': request.POST['full_name'],

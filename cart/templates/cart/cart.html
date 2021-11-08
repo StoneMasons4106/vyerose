@@ -13,16 +13,24 @@
 {% endblock %}
 
 {% block content %}
+<div id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Cart</h2>
+            <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Cart</li>
+            </ol>
+        </div>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- Cart -->
     <div class="overlay"></div>
     <div class="container mb-2">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Shopping cart</h2>
-                <hr>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col">
                 {% if cart_items %}
@@ -117,4 +125,7 @@
             </div>
         </div>
     </div>
+    <!-- End Cart -->
+
+</div>
 {% endblock %}
