@@ -4,25 +4,26 @@
 
 {% block extra_title %}Checkout{%endblock %} 
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
 
 {% block content %}
+<div id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Checkout</h2>
+            <ol>
+            <li><a href="{% url 'view_cart' %}">My Cart</a></li>
+            <li>Checkout</li>
+            </ol>
+        </div>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+
+    <!-- Checkout -->
     <div class="overlay"></div>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <hr>
-                <h2 class="logo-font mb-4">Checkout</h2>
-                <hr>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <p class="text-muted">Order Summary ({{ product_count }})</p>
@@ -106,6 +107,7 @@
                         <!-- Used to display form errors -->
                         <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                         <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ stripe_public_key }}" name="stripe_public_key">
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
@@ -140,11 +142,12 @@
             </span>
         </h1>
     </div>
+    <!-- End Checkout -->
+</div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
