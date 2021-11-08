@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import ContactField
 from products.models import Category
+from django.core.mail import EmailMessage
+from django.contrib import messages
 
 # Create your views here.
 
@@ -21,3 +23,31 @@ def contact(request):
     }
     
     return render(request, 'contact/contact.html', context)
+
+
+def send_message(request):
+
+    if request.method == 'POST':
+
+        print('test')
+
+        name = request.POST.get('name')
+        user_email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        to_email = request.POST['to_email']
+
+        email = EmailMessage(f'You have a new message from {name}', 
+        f'You have a new email from { name }!\n\nEmail: { user_email }\n\nSubject: { subject }\n\nMessage: { message }', 
+        to_email)
+        email.send()
+        messages.success(request, 'Your message has been sent!')
+
+        categories = Category.objects.values()
+
+        context = {
+            'page': 'contact',
+            'categories': categories,
+        }
+
+        return render(request, 'contact/contact.html', context)
