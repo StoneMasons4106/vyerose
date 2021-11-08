@@ -141,6 +141,10 @@ If you'd like to have a copy on your local machine, follow the steps below:
 
 * Some of the Python and HTML templating was taken from the Boutique Ado Project because the premise of an online store is the same.
 
+* Code for sending an email manually in Django was taken from this [Stack Overflow post](https://stackoverflow.com/questions/6367014/how-to-send-email-via-django).
+
+* Documentation for implementing signing in with Google was provided by the [Django Allauth docs](https://django-allauth.readthedocs.io/en/latest/providers.html#google).
+
 #### Acknowledgments
 
 * My mentor for continuous and helpful support/design suggestions.
