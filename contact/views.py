@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import ContactField
 from products.models import Category
 from django.core.mail import EmailMessage
@@ -29,8 +29,6 @@ def send_message(request):
 
     if request.method == 'POST':
 
-        print('test')
-
         name = request.POST.get('name')
         user_email = request.POST.get('email')
         subject = request.POST.get('subject')
@@ -43,11 +41,4 @@ def send_message(request):
         email.send()
         messages.success(request, 'Your message has been sent!')
 
-        categories = Category.objects.values()
-
-        context = {
-            'page': 'contact',
-            'categories': categories,
-        }
-
-        return render(request, 'contact/contact.html', context)
+        return redirect('contact')
