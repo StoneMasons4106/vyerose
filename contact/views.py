@@ -3,6 +3,7 @@ from .models import ContactField
 from products.models import Category
 from django.core.mail import EmailMessage
 from django.contrib import messages
+import os
 
 # Create your views here.
 
@@ -36,8 +37,8 @@ def send_message(request):
         to_email = ContactField.objects.values()[0]["email"]
 
         email = EmailMessage(f'You have a new message from {name}', 
-        f'You have a new email from { name }!\n\nEmail: { user_email }\n\nSubject: { subject }\n\nMessage: { message }', 
-        to_email)
+        f'You have a new email from { name }!\n\nEmail: { user_email }\n\nSubject: { subject }\n\nMessage: { message }',
+        to=[to_email])
         email.send()
         messages.success(request, 'Your message has been sent!')
 
