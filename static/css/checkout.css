@@ -49,12 +49,12 @@ select option[value=""] {
 #loading-overlay {
 	display: none;
 	position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(23, 162, 184, .85);
-    z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(23, 162, 184, .85);
+  z-index: 9999;
 }
 
 .loading-spinner {

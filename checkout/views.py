@@ -127,7 +127,11 @@ def checkout_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
-    if 'cart' in request.session:
+    if request.user.username:
+        cart = get_object_or_404(UserCart, user=request.user)
+        cart.cart = {}
+        cart.save()
+    else:
         del request.session['cart']
 
     template = 'checkout/checkout_success.html'
