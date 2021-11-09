@@ -57,6 +57,10 @@
 
 /* Allauth */
 
+.socialaccount_providers {
+    padding-left: 0px;
+}
+
 .allauth-form-inner-content {
     margin-top: 150px;
 }

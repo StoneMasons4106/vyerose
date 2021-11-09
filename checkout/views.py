@@ -87,7 +87,10 @@ def checkout(request):
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        cart = request.session.get('cart', {})
+        try:
+            cart = get_object_or_404(UserCart, user=request.user)
+        except:
+            cart = request.session.get('cart', {})
         if not cart:
             messages.error(request, "There's nothing in your cart at the moment")
             return redirect(reverse('products'))
