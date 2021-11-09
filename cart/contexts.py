@@ -29,14 +29,13 @@ def cart_contents(request):
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
-            for size, quantity in item_data['items_by_size'].items():
+            for quantity in item_data.items():
                 total += quantity * product.price
                 product_count += quantity
                 cart_items.append({
                     'item_id': item_id,
                     'quantity': quantity,
                     'product': product,
-                    'size': size,
                 })
     
     grand_total = total

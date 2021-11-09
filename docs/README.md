@@ -145,6 +145,8 @@ If you'd like to have a copy on your local machine, follow the steps below:
 
 * Documentation for implementing signing in with Google was provided by the [Django Allauth docs](https://django-allauth.readthedocs.io/en/latest/providers.html#google).
 
+* HTML and CSS for Google sign in button found in this [Codepen post](https://codepen.io/jimjammc/pen/PMOVZB).
+
 #### Acknowledgments
 
 * My mentor for continuous and helpful support/design suggestions.
