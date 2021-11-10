@@ -21,7 +21,6 @@ def cart_contents(request):
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
             total += item_data * product.price
-            delivery = total / 10
             product_count += item_data
             cart_items.append({
                 'item_id': item_id,
@@ -32,7 +31,6 @@ def cart_contents(request):
             product = get_object_or_404(Product, pk=item_id)
             for quantity in item_data.items():
                 total += quantity * product.price
-                delivery = total / 10
                 product_count += quantity
                 cart_items.append({
                     'item_id': item_id,
@@ -40,6 +38,7 @@ def cart_contents(request):
                     'product': product,
                 })
     
+    delivery = total / 10
     grand_total = total + delivery
     categories = Category.objects.values()
     
