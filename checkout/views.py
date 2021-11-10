@@ -12,16 +12,17 @@ import json
 
 def cache_checkout_data(request):
     if request.method == 'POST':
-        print('Caching...')
         try:
             try:
                 cart = get_object_or_404(UserCart, user=request.user)
+                jsonready_cart = cart.cart.replace("'", '"')
+                user_cart = json.loads(jsonready_cart)
             except:
-                cart = request.session.get('cart', {})
+                user_cart = request.session.get('cart', {})
             pid = request.POST.get('client_secret').split('_secret')[0]
             stripe.api_key = settings.STRIPE_SECRET_KEY
             stripe.PaymentIntent.modify(pid, metadata={
-                'cart': json.dumps(cart),
+                'cart': json.dumps(user_cart),
                 'save_info': request.POST.get('save_info'),
                 'username': request.user,
             })
