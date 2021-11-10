@@ -13,10 +13,14 @@ import json
 @require_POST
 def cache_checkout_data(request):
     try:
+        try:
+            cart = get_object_or_404(UserCart, user=request.user)
+        except:
+            cart = request.session.get('cart', {})
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
+            'cart': json.dumps(cart),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
