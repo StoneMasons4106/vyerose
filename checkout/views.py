@@ -44,7 +44,6 @@ def checkout(request):
             cart = json.loads(jsonready_cart)
         except:
             cart = request.session.get('cart', {})
-
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -108,8 +107,8 @@ def checkout(request):
         for item in current_cart["cart_items"]:
             count += item["quantity"]
         total = current_cart["total"]
-        delivery = current_cart["total"] / 10
-        grand_total = total + delivery
+        delivery_cost = current_cart["total"] / 10
+        grand_total = total + delivery_cost
         stripe_total = round(grand_total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
@@ -131,7 +130,7 @@ def checkout(request):
         'categories': current_cart["categories"],
         'cart_items': current_cart["cart_items"],
         'total': total,
-        'delivery': delivery,
+        'delivery': delivery_cost,
         'grand_total': grand_total,
         'product_count': count,
     }
@@ -152,6 +151,7 @@ def checkout_success(request, order_number):
     if request.user.username:
         cart = get_object_or_404(UserCart, user=request.user)
         cart.delete()
+        del request.session['cart']
     else:
         del request.session['cart']
 
