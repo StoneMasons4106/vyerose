@@ -126,7 +126,7 @@
               {% endif %}
             </ul>          
           </li>
-          {% if page == "cart" or page == "checkout" %}
+          {% if page == "cart" or page == "checkout" or page == "checkout_success" %}
             <li><a href="{% url 'view_cart' %}" class="active"><i class="fas fa-shopping-cart"></i></a></li>
           {% else %}
             <li><a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i></a></li>
@@ -209,8 +209,10 @@
   <!-- Stripe -->
   <script src="https://js.stripe.com/v3/"></script>
 
-  <!-- Stripe Elements JS -->
+  {% if page == "checkout" %}
+  <!-- Stripe Elements JS-->
   <script src="{% static 'js/stripe_elements.js' %}"></script>
+  {% endif %}
 
 </body>
 
