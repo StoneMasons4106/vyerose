@@ -39,7 +39,9 @@ def checkout(request):
 
     if request.method == 'POST':
         try:
-            cart = get_object_or_404(UserCart, user=request.user)
+            user_cart = get_object_or_404(UserCart, user=request.user)
+            jsonready_cart = user_cart.cart.replace("'", '"')
+            cart = json.loads(jsonready_cart)
         except:
             cart = request.session.get('cart', {})
 

@@ -6,7 +6,7 @@
 */
 
 var stripePublicKey = $('input[name="stripe_public_key"]').attr("value")
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
+var clientSecret = $('input[name="client_secret"]').attr("value");
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
