@@ -6,6 +6,7 @@ from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from cart.contexts import cart_contents
+from profiles.models import UserProfile
 import stripe
 import json
 
@@ -59,6 +60,8 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
+            if request.user.username:
+                order.user_profile = get_object_or_404(UserProfile, user=request.user)
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
             order.save()
