@@ -127,6 +127,7 @@ def checkout(request):
 
     template = 'checkout/checkout.html'
     context = {
+        'page': 'checkout',
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
@@ -160,6 +161,7 @@ def checkout_success(request, order_number):
 
     template = 'checkout/checkout_success.html'
     context = {
+        'page': 'checkout',
         'order': order,
     }
 

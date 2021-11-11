@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+from cart import contexts
+
 from .models import Product, Category
 from .forms import ProductForm
+from cart.contexts import cart_contents
 
 # Create your views here.
 
@@ -67,11 +70,18 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     categories = Category.objects.values()
+    contents = cart_contents(request)
+    cart_items = contents["cart_items"]
+    product_count = contents["product_count"]
+    total = contents["total"]
 
     context = {
         'page': 'products',
         'product': product,
         'categories': categories,
+        'cart_items': cart_items,
+        'product_count': product_count,
+        'total': total,
     }
 
     return render(request, 'products/product_detail.html', context)

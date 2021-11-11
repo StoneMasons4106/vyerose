@@ -126,7 +126,11 @@
               {% endif %}
             </ul>          
           </li>
-          <li><a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i></a></li>
+          {% if page == "cart" or page == "checkout" %}
+            <li><a href="{% url 'view_cart' %}" class="active"><i class="fas fa-shopping-cart"></i></a></li>
+          {% else %}
+            <li><a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i></a></li>
+          {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

@@ -43,6 +43,7 @@ def cart_contents(request):
     categories = Category.objects.values()
     
     context = {
+        'page': 'cart',
         'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
