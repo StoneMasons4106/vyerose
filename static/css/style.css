@@ -27,15 +27,15 @@
 
 /* Products - products/templates/products/products.html */
 
-.btn-black {
-    background: #444444;
+.btn-blue {
+    background: #006fbe;
     color: white;
 }
 
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus {
+    background: #1d284b;
     color: white;
 }
 
