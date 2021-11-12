@@ -39,6 +39,18 @@
     color: white;
 }
 
+.btn-black {
+    background: #006fbe;
+    color: white;
+}
+
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #1d284b;
+    color: white;
+}
+
 .sort-select-wrapper {
     width: 100%;
     text-align: center;

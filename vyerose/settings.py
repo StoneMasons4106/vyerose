@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'profiles',
     'checkout',
     'cart',
+    'gsheets',
 ]
 
 MIDDLEWARE = [
@@ -156,6 +157,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+GSHEETS = {
+    'CLIENT_SECRETS': '<PATH TO DOWNLOADED CREDS>'
+}
 
 STANDARD_DELIVERY_PERCENTAGE = 10
 
