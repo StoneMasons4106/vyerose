@@ -2,4 +2,3 @@ env.py
 __pycache__/
 *.sqlite3
 MeFamily-pro/
-gsheets/
