@@ -159,6 +159,8 @@ def checkout_success(request, order_number):
     else:
         del request.session['cart']
 
+    order.push_to_sheet()
+
     template = 'checkout/checkout_success.html'
     context = {
         'page': 'checkout_success',

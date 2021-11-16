@@ -80,6 +80,11 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 8. [Django](https://www.djangoproject.com/)
     * Django is the Python framework that this project was built on.
 
+9. [Allauth](https://django-allauth.readthedocs.io/en/latest/)
+    * Allauth is used for the authentication models for this project.
+
+10. [Django-GSheets](https://github.com/olliebreeden/django-gsheets/tree/patch-1)
+    * A forked branch of django-gsheets was used for Google Sheet integration which coerces all data in a model to a string so it can be passed to the sheet.
 
 ## Testing
 
@@ -132,6 +137,8 @@ If you'd like to have a copy on your local machine, follow the steps below:
 #### Media
 
 * Much of the media was provided by [Pixabay](https://pixabay.com/).
+
+* Favicons were generated using [this Generator](https://www.favicon-generator.org/).
 
 #### Content
 

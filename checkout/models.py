@@ -1,4 +1,5 @@
-import uuid
+from uuid import uuid4
+import os
 
 from django.db import models
 from django.db.models import Sum
@@ -9,8 +10,13 @@ from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
 
+from gsheets import mixins
 
-class Order(models.Model):
+
+class Order(mixins.SheetPushableMixin, models.Model):
+    spreadsheet_id = os.environ.get("SPREADSHEET_ID")
+
+    guid = models.CharField(max_length=255, default=uuid4, unique=True)
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
@@ -34,7 +40,7 @@ class Order(models.Model):
         """
         Generate a random, unique order number using UUID
         """
-        return uuid.uuid4().hex.upper()
+        return uuid4().hex.upper()
 
     def update_total(self):
         """
@@ -75,3 +81,4 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
+        

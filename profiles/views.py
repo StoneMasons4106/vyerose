@@ -5,6 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm, UserForm
 from django.contrib.auth.models import User
 from products.models import Category
+from allauth.account.models import EmailAddress
 
 from checkout.models import Order
 
@@ -19,9 +20,18 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         form_two = UserForm(request.POST, instance=user)
         if form.is_valid() and form_two.is_valid():
-            form.save()
-            form_two.save()
-            messages.success(request, 'Profile updated successfully')
+            try:
+                user_email = get_object_or_404(EmailAddress, user_id=request.user)
+                if request.POST.get('email') != user_email:
+                    new_email = request.POST.get('email')
+                    profile.add_email_address(request, new_email)
+                    messages.success(request, 'Profile updated successfully, please confirm the new email in your profile by clicking the link in the email sent to you.')
+                else:
+                    messages.success(request, 'Profile updated successfully.')
+                form.save()
+                form_two.save()
+            except EmailAddress.MultipleObjectsReturned:
+                messages.error(request, 'Please confirm the email in your profile before attempting to update it again.')
         else:
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
