@@ -22,7 +22,7 @@ def profile(request):
         if form.is_valid() and form_two.is_valid():
             try:
                 user_email = get_object_or_404(EmailAddress, user_id=request.user)
-                if request.POST.get('email') != user_email:
+                if str(request.POST.get('email')) != str(user_email):
                     new_email = request.POST.get('email')
                     profile.add_email_address(request, new_email)
                     messages.success(request, 'Profile updated successfully, please confirm the new email in your profile by clicking the link in the email sent to you.')

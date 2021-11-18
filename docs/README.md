@@ -43,6 +43,13 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 ## Features
 
+* **User Registration** - Allows user to store their delivery information, their default email, name, phone number, and view their order history.
+
+* **Google Sheets Integration** - When an order is created, the order information from the Order Model gets pushed to a Google Sheet for the owner of the store to keep track of.
+
+* **Contact Page** - Allows end users to send emails and questions to the store owner for easy correspondence.
+
+* **Cart Model** - Allows users that are registered with the site to have their cart data stored for easy access if they leave the site and log back in.
 
 ## Technologies Used
 

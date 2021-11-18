@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.template.loader import render_to_string
 from django.contrib import messages
+from django.core.mail import EmailMessage
 from django.conf import settings
 from cart.models import UserCart
 from .forms import OrderForm
@@ -92,6 +94,7 @@ def checkout(request):
                     return redirect(reverse('view_cart'))
 
             request.session['save_info'] = 'save-info' in request.POST
+            send_order_confirmation(request, order)
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
@@ -168,3 +171,75 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def send_order_confirmation(request, order):
+
+    if request.method == 'POST':
+        
+        full_name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone_number')
+        address = request.POST.get('street_address1')
+        town_or_city = request.POST.get('town_or_city')
+        county = request.POST.get('county')
+        country = request.POST.get('country')
+        zipcode = request.POST.get('postcode')
+        order_number = order.order_number
+        date = order.date
+        order_total = order.order_total
+        delivery_cost = order.delivery_cost
+        grand_total = order.grand_total
+
+        confirmation_message = render_to_string(
+            'checkout/emails/order_confirmation.txt', {
+                'full_name': full_name,
+                'email': email,
+                'phone': phone,
+                'address': address,
+                'town_or_city': town_or_city,
+                'county': county,
+                'country': country,
+                'zipcode': zipcode,
+                'order_number': order_number,
+                'order_date': date,
+                'order_total': round(order_total, 2),
+                'delivery_cost': round(delivery_cost, 2),
+                'grand_total': round(grand_total, 2),
+                'order': order,
+            }
+        )
+
+        notification_message = render_to_string(
+            'checkout/emails/order_notification.txt', {
+                'full_name': full_name,
+                'email': email,
+                'phone': phone,
+                'address': address,
+                'town_or_city': town_or_city,
+                'county': county,
+                'country': country,
+                'zipcode': zipcode,
+                'order_number': order_number,
+                'order_date': date,
+                'order_total': round(order_total, 2),
+                'delivery_cost': round(delivery_cost, 2),
+                'grand_total': round(grand_total, 2),
+                'order': order,
+            }
+        )
+
+        confirmation_message_wrapper = EmailMessage(
+            'Thank you for your order!',
+            confirmation_message,
+            to=[email]
+        )
+
+        notification_message_wrapper = EmailMessage(
+            f'New Order Number: {order_number}',
+            notification_message,
+            to=[settings.DEFAULT_FROM_EMAIL]
+        )
+
+        confirmation_message_wrapper.send()
+        notification_message_wrapper.send()

@@ -4,22 +4,48 @@
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
+{% block extra_title %}Verify Your E-mail{% endblock %}
+
 {% block inner_content %}
-<hr>
-<h2 class="logo-font mb-4">{% trans "Verify Your E-mail Address" %}</h2>
-<hr>
 
-{% url 'account_email' as email_url %}
+<div id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Sign Up</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Sign Up</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="allauth-form-inner-content">
 
-<p>{% blocktrans %}This part of the site requires us to verify that
-you are who you claim to be. For this purpose, we require that you
-verify ownership of your e-mail address. {% endblocktrans %}</p>
+            {% url 'account_email' as email_url %}
 
-<p>{% blocktrans %}We have sent an e-mail to you for
-verification. Please click on the link inside this e-mail. Please
-contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+            <p>{% blocktrans %}This part of the site requires us to verify that
+            you are who you claim to be. For this purpose, we require that you
+            verify ownership of your e-mail address. {% endblocktrans %}</p>
 
-<p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
+            <p>{% blocktrans %}We have sent an e-mail to you for
+            verification. Please click on the link inside this e-mail. Please
+            contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
 
+            <p>{% blocktrans %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktrans %}</p>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
 
 {% endblock %}

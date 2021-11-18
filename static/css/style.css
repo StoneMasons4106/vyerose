@@ -80,10 +80,6 @@
     padding-left: 0px;
 }
 
-.allauth-form-inner-content {
-    margin-top: 150px;
-}
-
 .allauth-form-inner-content p {
     margin-top: 1.5rem; /* mt-4 */
     color: #6c757d; /* text-secondary */
@@ -235,7 +231,7 @@
 
 .breadcrumbs {
     margin-top: 109px !important;
-    width: 100%;
+    width: 100% !important;
 }
 
 
