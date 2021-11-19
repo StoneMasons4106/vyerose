@@ -12,6 +12,8 @@ from profiles.models import UserProfile
 
 from gsheets import mixins
 
+from decimal import Decimal
+
 
 class Order(mixins.SheetPushableMixin, models.Model):
     spreadsheet_id = os.environ.get("SPREADSHEET_ID")
@@ -31,6 +33,7 @@ class Order(mixins.SheetPushableMixin, models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
+    sales_tax = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_cart = models.TextField(null=False, blank=False, default='')
@@ -49,7 +52,8 @@ class Order(mixins.SheetPushableMixin, models.Model):
         """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-        self.grand_total = self.order_total + self.delivery_cost
+        self.sales_tax = self.order_total * Decimal(settings.SALES_TAX_PERCENTAGE / 100)
+        self.grand_total = Decimal(self.order_total) + Decimal(self.delivery_cost) + Decimal(self.sales_tax)
         self.save()
 
     def save(self, *args, **kwargs):

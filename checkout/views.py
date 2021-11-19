@@ -112,9 +112,10 @@ def checkout(request):
         count = 0
         for item in current_cart["cart_items"]:
             count += item["quantity"]
-        total = current_cart["total"]
-        delivery_cost = current_cart["total"] / 10
-        grand_total = total + delivery_cost
+        total = float(current_cart["total"])
+        delivery_cost = total * (settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+        sales_tax = total * (settings.SALES_TAX_PERCENTAGE / 100)
+        grand_total = total + delivery_cost + sales_tax
         stripe_total = round(grand_total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
@@ -138,6 +139,7 @@ def checkout(request):
         'cart_items': current_cart["cart_items"],
         'total': total,
         'delivery': delivery_cost,
+        'sales_tax': sales_tax,
         'grand_total': grand_total,
         'product_count': count,
     }
@@ -189,6 +191,7 @@ def send_order_confirmation(request, order):
         date = order.date
         order_total = order.order_total
         delivery_cost = order.delivery_cost
+        sales_tax = order.sales_tax
         grand_total = order.grand_total
 
         confirmation_message = render_to_string(
@@ -205,6 +208,7 @@ def send_order_confirmation(request, order):
                 'order_date': date,
                 'order_total': round(order_total, 2),
                 'delivery_cost': round(delivery_cost, 2),
+                'sales_tax': round(sales_tax, 2),
                 'grand_total': round(grand_total, 2),
                 'order': order,
             }
@@ -224,13 +228,14 @@ def send_order_confirmation(request, order):
                 'order_date': date,
                 'order_total': round(order_total, 2),
                 'delivery_cost': round(delivery_cost, 2),
+                'sales_tax': round(sales_tax, 2),
                 'grand_total': round(grand_total, 2),
                 'order': order,
             }
         )
 
         confirmation_message_wrapper = EmailMessage(
-            'Thank you for your order!',
+            '[VyeRose] Thank you for your order!',
             confirmation_message,
             to=[email]
         )

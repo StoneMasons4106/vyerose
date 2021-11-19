@@ -38,8 +38,9 @@ def cart_contents(request):
                     'product': product,
                 })
     
-    delivery = total / 10
-    grand_total = total + delivery
+    delivery = float(total) * (settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    sales_tax = float(total) * (settings.SALES_TAX_PERCENTAGE / 100)
+    grand_total = float(total) + delivery + sales_tax
     categories = Category.objects.values()
     
     context = {
@@ -48,6 +49,7 @@ def cart_contents(request):
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
+        'sales_tax': sales_tax,
         'grand_total': grand_total,
         'categories': categories,
     }

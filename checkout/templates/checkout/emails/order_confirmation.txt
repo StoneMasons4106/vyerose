@@ -1,4 +1,4 @@
-{% load i18n %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Hello from {{ site_name }}!{% endblocktrans %}
+{% load i18n %}Hello from VyeRose!
 
 This email is to confirm the recent order as shown below:
 
@@ -18,9 +18,10 @@ Phone: {{ phone }}
 
 Order Total: ${{ order_total }}
 Delivery: ${{ delivery_cost }}
+Sales Tax: ${{ sales_tax }}
 Grand Total: ${{ grand_total }}
 
 Please allow 2 to 3 weeks for manufacturing and shipping.
 
-{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you from {{ site_name }}!
-{{ site_domain }}{% endblocktrans %}
+Thank you from VyeRose!
+https://vyerose.herokuapp.com/

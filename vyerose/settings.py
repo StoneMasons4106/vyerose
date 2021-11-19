@@ -164,6 +164,8 @@ GSHEETS = {
 
 STANDARD_DELIVERY_PERCENTAGE = 10
 
+SALES_TAX_PERCENTAGE = 8.75
+
 if 'USE_AWS' in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
