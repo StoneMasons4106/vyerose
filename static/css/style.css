@@ -27,28 +27,6 @@
 
 /* Products - products/templates/products/products.html */
 
-.btn-blue,
-.btn-black {
-    background: #006fbe;
-    color: white;
-    border: 0;
-    transition: 0.4s;
-    border-radius: 4px !important;
-    padding: 10px 30px;
-}
-
-.btn-blue:hover,
-.btn-blue:active,
-.btn-blue:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus,
-.decrement-qty,
-.increment-qty {
-    background: #1d284b;
-    color: white;
-}
-
 .decrement-qty,
 .increment-qty {
     background: #006fbe;
@@ -66,6 +44,10 @@
 
 .contact-products {
     text-align: center;
+}
+
+#search-button {
+    padding: 10px 15px !important;
 }
 
 /* Product Detail - products/templates/products/product_detail.html */
@@ -96,36 +78,6 @@
 
 .allauth-form-inner-content input::placeholder {
     color: #aab7c4;
-}
-
-.allauth-form-inner-content button,
-.allauth-form-inner-content input[type='submit'] {
-	/* btn */
-	display: inline-block;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-color: #000;
-    border: 1px solid #000;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0;
-
-    /* standard bootstrap btn transitions */
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.allauth-form-inner-content button:hover,
-.allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
-    background-color: #222;
-    border-color: #222;
 }
 
 .allauth-form-inner-content a {
@@ -259,6 +211,36 @@
 .remove-item {
     cursor: pointer;
 }
+
+
+/* Button Styling */
+
+.btn-blue,
+.btn-black {
+    background: #006fbe;
+    color: white;
+    border: 0;
+    transition: 0.4s;
+    border-radius: 4px !important;
+    padding: 10px 30px;
+}
+
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus,
+.decrement-qty,
+.increment-qty {
+    background: #1d284b;
+    color: white;
+}
+
+.btn-outline-black {
+    padding: 10px 30px !important;
+}
+
 
 /* Media Queries */
 

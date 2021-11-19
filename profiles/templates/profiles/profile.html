@@ -34,13 +34,13 @@ Profile{%endblock %} {% block content %}
         <p class="text-muted">{{ profile.default_country }}</p>
         <a
           href="{% url 'edit_profile' %}"
-          class="btn btn-black rounded-0 float-right"
+          class="btn btn-outline-black float-right"
         >
           Edit Profile
         </a>
         <a
           href="{% url 'account_change_password' %}"
-          class="btn btn-black rounded-0 float-right"
+          class="btn btn-black float-right"
         >
           Change Password
         </a>
