@@ -39,7 +39,6 @@ def profile(request):
         form_two = UserForm(instance=user)
 
     orders = profile.orders.all()
-    categories = Category.objects.values()
 
     template = 'profiles/profile.html'
     context = {
@@ -48,7 +47,6 @@ def profile(request):
         'user': user,
         'orders': orders,
         'on_profile_page': True,
-        'categories': categories,
     }
 
     return render(request, template, context)
@@ -66,7 +64,6 @@ def edit_profile(request):
 
     messages.info(request, f'You are now editing your profile.')
     template = 'profiles/edit_profile.html'
-    categories = Category.objects.values()
     
     context = {
         'page': 'profile',
@@ -74,7 +71,6 @@ def edit_profile(request):
         'form_two': form_two,
         'orders': orders,
         'on_profile_page': True,
-        'categories': categories,
     }
 
     return render(request, template, context)
@@ -89,13 +85,11 @@ def order_history(request, order_number):
     ))
 
     template = 'checkout/checkout_success.html'
-    categories = Category.objects.values()
 
     context = {
         'page': 'profile',
         'order': order,
         'from_profile': True,
-        'categories': categories,
     }
 
     return render(request, template, context)

@@ -1,4 +1,6 @@
 {% load static %}
+{% load cart_tools %}
+{% load product_tools %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +75,7 @@
             <li class="dropdown"><a href="#" class="active"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
-                {% for category in categories %}
+                {% for category in all_categories|categories %}
                 <li><a href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
                 {% endfor %}
                 <li><a href="{% url 'products' %}">All Products</a></li>
@@ -82,7 +84,7 @@
             {% else %}
             <li class="dropdown"><a href="#" class="active"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                {% for category in categories %}
+                {% for category in all_categories|categories %}
                 <li><a href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
                 {% endfor %}
                 <li><a href="{% url 'products' %}">All Products</a></li>
@@ -94,7 +96,7 @@
             <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="{% url 'add_product' %}" class="dropdown-item">Add Product</a></li>
-                {% for category in categories %}
+                {% for category in all_categories|categories %}
                 <li><a href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
                 {% endfor %}
                 <li><a href="{% url 'products' %}">All Products</a></li>
@@ -103,7 +105,7 @@
             {% else %}
             <li class="dropdown"><a href="#"><span>Products</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                {% for category in categories %}
+                {% for category in all_categories|categories %}
                 <li><a href="{% url 'products' %}?category={{ category.name }}">{{ category.friendly_name }}</a></li>
                 {% endfor %}
                 <li><a href="{% url 'products' %}">All Products</a></li>
@@ -127,9 +129,11 @@
             </ul>          
           </li>
           {% if page == "cart" or page == "checkout" or page == "checkout_success" %}
-            <li><a href="{% url 'view_cart' %}" class="active"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="{% url 'view_cart' %}" class="active" id="cart_header"><i class="fas fa-shopping-cart"></i> <span class="cart_total">${% cart_grand_total request %}</span></a>
+            </li>
           {% else %}
-            <li><a href="{% url 'view_cart' %}"><i class="fas fa-shopping-cart"></i></a></li>
+            <li><a href="{% url 'view_cart' %}" id="cart_header"><i class="fas fa-shopping-cart"></i> <span class="cart_total">${% cart_grand_total request %}</span></a>
+            </li>
           {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

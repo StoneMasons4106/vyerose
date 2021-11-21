@@ -51,7 +51,6 @@ def all_products(request):
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-    all_categories = Category.objects.values()
 
     context = {
         'page': 'products',
@@ -59,7 +58,6 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
-        'categories': all_categories,
     }
 
     return render(request, 'products/products.html', context)
@@ -69,7 +67,6 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    categories = Category.objects.values()
     contents = cart_contents(request)
     cart_items = contents["cart_items"]
     product_count = contents["product_count"]
@@ -78,7 +75,6 @@ def product_detail(request, product_id):
     context = {
         'page': 'products',
         'product': product,
-        'categories': categories,
         'cart_items': cart_items,
         'product_count': product_count,
         'total': total,
@@ -106,12 +102,10 @@ def add_product(request):
         form = ProductForm()
         
     template = 'products/add_product.html'
-    categories = Category.objects.values()
     
     context = {
         'page': 'products',
         'form': form,
-        'categories': categories,
     }
 
     return render(request, template, context)
@@ -138,13 +132,11 @@ def edit_product(request, product_id):
         messages.info(request, f'You are editing {product.name}')
 
     template = 'products/edit_product.html'
-    categories = Category.objects.values()
 
     context = {
         'page': 'products',
         'form': form,
         'product': product,
-        'categories': categories,
     }
 
     return render(request, template, context)

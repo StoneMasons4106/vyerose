@@ -8,6 +8,11 @@
     font-size: 16px !important;
 }
 
+.cart_total {
+    margin-left: 10px;
+    font-size: 17px;
+}
+
 
 /* Footer - templates/base.html */
 
@@ -34,6 +39,7 @@
     border: 0;
     transition: 0.4s;
     border-radius: 4px !important;
+    padding: 6px 12px !important;
 }
 
 .sort-select-wrapper {
@@ -54,6 +60,10 @@
 
 .product-container {
     margin-bottom: 50px;
+}
+
+.qty_input {
+    max-width: 100px !important;
 }
 
 /* Allauth */
@@ -238,7 +248,8 @@
 }
 
 .btn-outline-black {
-    padding: 10px 30px !important;
+    padding: 9px 29px !important;
+    border-radius: 4px !important;
 }
 
 
@@ -249,5 +260,11 @@
     #breadcrumbs form,
     #breadcrumbs ol {
         margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    #cart_header {
+        width: 125px;
     }
 }

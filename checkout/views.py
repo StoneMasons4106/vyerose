@@ -160,7 +160,10 @@ def checkout_success(request, order_number):
     if request.user.username:
         cart = get_object_or_404(UserCart, user=request.user)
         cart.delete()
-        del request.session['cart']
+        try:
+            del request.session['cart']
+        except:
+            pass
     else:
         del request.session['cart']
 
