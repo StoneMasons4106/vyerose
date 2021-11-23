@@ -159,7 +159,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 GSHEETS = {
-    'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials.json/')
+    'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials.json')
 }
 
 STANDARD_DELIVERY_PERCENTAGE = 10
@@ -190,7 +190,7 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
     GSHEETS = {
-        'CLIENT_SECRETS': f'https://{AWS_S3_CUSTOM_DOMAIN}/gsheets/credentials2.json'
+        'CLIENT_SECRETS': 'https://drive.google.com/file/d/1WOr27RGX04p-FB266_BJcJ8UAJ-B5eee/view?usp=sharing'
     }
 
 
