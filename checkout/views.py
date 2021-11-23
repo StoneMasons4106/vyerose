@@ -11,6 +11,8 @@ from cart.contexts import cart_contents
 from profiles.models import UserProfile
 import stripe
 import json
+import os
+from sheets.get_creds import check_for_creds
 
 
 def cache_checkout_data(request):
@@ -96,6 +98,12 @@ def checkout(request):
 
             request.session['save_info'] = 'save-info' in request.POST
             send_order_confirmation(request, order)
+
+            if 'USE_AWS' in os.environ:
+                check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(settings.BASE_DIR, 'sheets/credentials2.json'))
+            else:
+                check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(settings.BASE_DIR, 'sheets/credentials.json'))
+
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \

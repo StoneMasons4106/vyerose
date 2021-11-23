@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import dj_database_url
 import os
+from sheets.get_creds import check_for_creds
 if os.path.exists("env.py"):
     import env
 
@@ -158,6 +159,8 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(BASE_DIR, 'sheets/credentials.json'))
+
 GSHEETS = {
     'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials.json')
 }
@@ -189,6 +192,7 @@ if 'USE_AWS' in os.environ:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(BASE_DIR, 'sheets/credentials2.json'))
     GSHEETS = {
         'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials2.json')
     }
