@@ -33,6 +33,18 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 #### Design Features Include:
 
+* **Mobile Menu** - Consolidating the menu down for mobile devices lets it be flexible for device size.
+
+* **Flexible Footer** - Custom JS was written to measure the window and content and intelligently place the footer either fixed at the bottom, or at the bottom of the content.
+
+* **Breadcrumbs** - Breadcrumb headers are included on each page for a beautiful and uniform appearance.
+
+* **Google Maps Embed** - Google Maps embed link was used on the Contact page and is changeable so the shop owner can show where they are located and update as needed.
+
+* **Homepage Carousel** - Attractive images of jewelry cycle through on the home page for a pleasing experience.
+
+* **Color Scheme** - Primary colors used derived from the Bootstrap template are white, 2 shades of blue, and pastels from the logo to complement.
+
 ### Wireframes
 
 * **Desktop** - [View](vyerose_desktop.pdf)
@@ -47,9 +59,17 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 * **Google Sheets Integration** - When an order is created, the order information from the Order Model gets pushed to a Google Sheet for the owner of the store to keep track of.
 
+* **Google SSO** - Allauth supports signing in and creating an account through your own Google account.
+
 * **Contact Page** - Allows end users to send emails and questions to the store owner for easy correspondence.
 
 * **Cart Model** - Allows users that are registered with the site to have their cart data stored for easy access if they leave the site and log back in.
+
+* **Responsiveness** - Site responds to all device sizes and looks natural on Desktop, Mobile, and Tablet views.
+
+* **Customizable Store** - Flexible product design allows the owner to add products, edit products, and delete them as their store changes.
+
+* **Checkout** - Integration with Stripe allows people to shop and buy products, complete with confirmation emails for both the consumer, and the store owner.
 
 ## Technologies Used
 
@@ -95,6 +115,7 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 ## Testing
 
+The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 ### Testing User Stories from UX Section
 
