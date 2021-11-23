@@ -162,7 +162,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(BASE_DIR, 'sheets/credentials.json'))
 
 GSHEETS = {
-    'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials.json')
+    'CLIENT_SECRETS': os.path.join(BASE_DIR, 'sheets/credentials.json')
 }
 
 STANDARD_DELIVERY_PERCENTAGE = 10
@@ -194,7 +194,7 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
     check_for_creds(os.environ.get("CREDENTIALS_ID"), os.path.join(BASE_DIR, 'sheets/credentials2.json'))
     GSHEETS = {
-        'CLIENT_SECRETS': os.path.join(BASE_DIR, 'gsheets/credentials2.json')
+        'CLIENT_SECRETS': os.path.join(BASE_DIR, 'sheets/credentials2.json')
     }
 
 
