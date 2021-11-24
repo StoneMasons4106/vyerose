@@ -21,12 +21,24 @@
     margin-bottom: 30px;
 }
 
+.privacy-policy-link {
+    margin-bottom: 20px;
+}
+
 
 /* About - home/templates/home/index.html */
 
 .about {
     width: 100%;
     text-align: center;
+}
+
+
+/* Privacy Policy - home/templates/home/privacypolicy.html */
+
+.privacy-policy-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
@@ -54,6 +66,10 @@
 
 #search-button {
     padding: 10px 15px !important;
+}
+
+.products-row {
+    margin-bottom: 20px !important;
 }
 
 /* Product Detail - products/templates/products/product_detail.html */
