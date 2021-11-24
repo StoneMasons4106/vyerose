@@ -15,3 +15,13 @@ def index(request):
     }
     
     return render(request, 'home/index.html', context)
+
+
+def privacy_policy(request):
+
+    context = {
+        'page': 'home',
+    }
+
+    return render(request, 'home/privacypolicy.html', context)
+    
