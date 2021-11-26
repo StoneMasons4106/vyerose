@@ -23,7 +23,7 @@
 
     <!-- Checkout -->
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container checkout-container">
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <p class="text-muted">Order Summary ({{ product_count }})</p>
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Please fill out the form below to complete your order</p>
+                <p class="text-muted">Please fill out the form below to complete your order:</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">

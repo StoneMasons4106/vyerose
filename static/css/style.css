@@ -26,6 +26,36 @@
 }
 
 
+/* Button Styling */
+
+.btn-blue,
+.btn-black {
+    background: #006fbe;
+    color: white;
+    border: 0;
+    transition: 0.4s;
+    border-radius: 4px !important;
+    padding: 10px 30px;
+}
+
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus,
+.decrement-qty,
+.increment-qty {
+    background: #1d284b;
+    color: white;
+}
+
+.btn-outline-black {
+    padding: 9px 29px !important;
+    border-radius: 4px !important;
+}
+
+
 /* About - home/templates/home/index.html */
 
 .about {
@@ -72,6 +102,21 @@
     margin-bottom: 20px !important;
 }
 
+.add-product-container,
+.edit-product-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-file {
+    padding: 10px 10px !important;
+}
+
+#new-image {
+    width: 220px;
+}
+
+
 /* Product Detail - products/templates/products/product_detail.html */
 
 .product-container {
@@ -81,6 +126,7 @@
 .qty_input {
     max-width: 100px !important;
 }
+
 
 /* Allauth */
 
@@ -238,34 +284,8 @@
     cursor: pointer;
 }
 
-
-/* Button Styling */
-
-.btn-blue,
-.btn-black {
-    background: #006fbe;
-    color: white;
-    border: 0;
-    transition: 0.4s;
-    border-radius: 4px !important;
-    padding: 10px 30px;
-}
-
-.btn-blue:hover,
-.btn-blue:active,
-.btn-blue:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus,
-.decrement-qty,
-.increment-qty {
-    background: #1d284b;
-    color: white;
-}
-
-.btn-outline-black {
-    padding: 9px 29px !important;
-    border-radius: 4px !important;
+.cart-container {
+    margin-top: 10px;
 }
 
 
@@ -273,6 +293,12 @@
 
 #custom_order_notes textarea {
     height: 100px;
+}
+
+.checkout-container,
+.checkout-success-container {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 
