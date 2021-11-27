@@ -19,5 +19,8 @@ def update_on_delete(sender, instance, **kwargs):
 
 
 @receiver(post_save, sender=Order)
-def update_order_on_save(sender, instance, **kwargs):
-    instance.push_to_sheet()
+def update_order_on_save(sender, instance, created, **kwargs):
+    if created:
+        pass
+    else:
+        instance.push_to_sheet()
