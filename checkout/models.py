@@ -55,6 +55,8 @@ class Order(mixins.SheetPushableMixin, models.Model):
     original_cart = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     custom_order_notes = models.TextField(max_length=1024, null=True, blank=True)
+    courier = models.CharField(max_length=50, null=True, blank=True)
+    tracking_number = models.CharField(max_length=80, null=True, blank=True)
 
     def _generate_order_number(self):
         """
