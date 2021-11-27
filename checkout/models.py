@@ -15,11 +15,27 @@ from gsheets import mixins
 from decimal import Decimal
 
 
+class OrderProgress(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'OrderProgress'
+        
+    name = models.CharField(max_length=254)
+    friendly_name = models.CharField(max_length=254, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_friendly_name(self):
+        return self.friendly_name
+
+
 class Order(mixins.SheetPushableMixin, models.Model):
     spreadsheet_id = os.environ.get("SPREADSHEET_ID")
 
     guid = models.CharField(max_length=255, default=uuid4, unique=True)
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    order_progress = models.ForeignKey('OrderProgress', null=True, blank=True, on_delete=models.SET_NULL)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)

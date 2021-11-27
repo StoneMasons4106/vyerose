@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from cart.models import UserCart
 from .forms import OrderForm
-from .models import Order, OrderLineItem
+from .models import Order, OrderLineItem, OrderProgress
 from products.models import Product
 from cart.contexts import cart_contents
 from profiles.models import UserProfile
@@ -69,6 +69,7 @@ def checkout(request):
                 order.user_profile = get_object_or_404(UserProfile, user=request.user)
             order.stripe_pid = pid
             order.original_cart = json.dumps(cart)
+            order.order_progress = get_object_or_404(OrderProgress, name='open')
             order.save()
             for item_id, item_data in cart.items():
                 try:
