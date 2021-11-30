@@ -214,12 +214,14 @@
   <!-- Cart JS -->
   <script src="{% static 'js/cart.js' %}"></script>
 
+  {% if page == "checkout" %}
+
   <!-- Stripe -->
   <script src="https://js.stripe.com/v3/"></script>
 
-  {% if page == "checkout" %}
   <!-- Stripe Elements JS-->
   <script src="{% static 'js/stripe_elements.js' %}"></script>
+  
   {% endif %}
 
 </body>

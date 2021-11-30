@@ -63,7 +63,7 @@ Profile{%endblock %} {% block content %}
             </tbody>
           </table>
         </div>
-        <h5 class="text-muted">Default Delivery Information</h5>
+        <h5 class="text-muted" id="default-delivery-information">Default Delivery Information</h5>
         <div class="table-responsive">
           <table class="table table-sm table-borderless">
             <thead>
@@ -164,13 +164,13 @@ Profile{%endblock %} {% block content %}
         </div>
         <a
           href="{% url 'edit_profile' %}"
-          class="btn btn-outline-black float-right"
+          class="btn btn-outline-black float-right shown-button"
         >
           Edit Profile
         </a>
         <a
           href="{% url 'account_change_password' %}"
-          class="btn btn-black float-right"
+          class="btn btn-black float-right shown-button"
         >
           Change Password
         </a>
@@ -221,6 +221,18 @@ Profile{%endblock %} {% block content %}
             </tbody>
           </table>
         </div>
+        <a
+          href="{% url 'edit_profile' %}"
+          class="btn btn-outline-black float-right hidden-button"
+        >
+          Edit Profile
+        </a>
+        <a
+          href="{% url 'account_change_password' %}"
+          class="btn btn-black float-right hidden-button"
+        >
+          Change Password
+        </a>
       </div>
     </div>
   </div>

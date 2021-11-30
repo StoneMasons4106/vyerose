@@ -277,6 +277,11 @@
     font-weight: 400;
 }
 
+#default-delivery-information {
+    margin-top: 10px;
+}
+
+
 /* Cart */
 
 .update-link,
@@ -315,5 +320,19 @@
 @media screen and (max-width: 991px) {
     #cart_header {
         width: 125px;
+    }
+
+    .hidden-button {
+        display: inline-block;
+    }
+
+    .shown-button {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hidden-button {
+        display: none;
     }
 }
