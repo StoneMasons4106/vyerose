@@ -119,7 +119,33 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Testing User Stories from UX Section
 
+* First Time Visitor Goals:
+    * Easily understand the purpose of the site.
+        * Result:
+    * Quickly learn how to navigate the site and make sure it is intuitively accessible for first time users.
+        * Result:
+    * Visually appealing to have a pleasant first experience.
+        * Result:
+    * Be able to quickly browse products to quickly determine interest.
+        * Result:
+    * Be able to contact the owner of the store if I have any questions.
+        * Result:
 
+* Returning Visitor Goals:
+    * Be able to login/register so information can be saved, and chekout is expedient.
+        * Result:
+    * Be able to login with my Google account so creating an account is painless.
+        * Result:
+    * Have items that I my have in my cart still be there when I return.
+        * Result:
+
+* Frequent User Goals:
+    * Be able to save my delivery information so that I don't have to re-enter every time I order.
+        * Result:
+    * See my order history to see what I have already bought.
+        * Result:
+    * Have the option to custom order if I want to change something to a particular product.
+        * Result:
 
 ### Further Testing
 
