@@ -30,28 +30,31 @@ def update_order_on_save(sender, instance, created, **kwargs):
         pass
     else:
         
-        if instance.order_progress.friendly_name == 'Shipped' and instance.courier != None and instance.tracking_number != None:
-            
-            shipped_message = render_to_string(
-                'checkout/emails/order_shipped.txt', {
-                    'order_number': instance.order_number,
-                    'order_date': instance.date,
-                    'order_total': round(instance.order_total, 2),
-                    'delivery_cost': round(instance.delivery_cost, 2),
-                    'sales_tax': round(instance.sales_tax, 2),
-                    'grand_total': round(instance.grand_total, 2),
-                    'order': instance,
-                    'courier': instance.courier,
-                    'tracking_number': instance.tracking_number
-                }
-            )
+        try:
+            if instance.order_progress.friendly_name == 'Shipped' and instance.courier != None and instance.tracking_number != None:
+                
+                shipped_message = render_to_string(
+                    'checkout/emails/order_shipped.txt', {
+                        'order_number': instance.order_number,
+                        'order_date': instance.date,
+                        'order_total': round(instance.order_total, 2),
+                        'delivery_cost': round(instance.delivery_cost, 2),
+                        'sales_tax': round(instance.sales_tax, 2),
+                        'grand_total': round(instance.grand_total, 2),
+                        'order': instance,
+                        'courier': instance.courier,
+                        'tracking_number': instance.tracking_number
+                    }
+                )
 
-            shipped_message_wrapper = EmailMessage(
-                f'Your Order Has Shipped!',
-                shipped_message,
-                to=[instance.email]
-            )
+                shipped_message_wrapper = EmailMessage(
+                    f'Your Order Has Shipped!',
+                    shipped_message,
+                    to=[instance.email]
+                )
 
-            shipped_message_wrapper.send()
+                shipped_message_wrapper.send()
+        except:
+            pass
         
         instance.push_to_sheet()
