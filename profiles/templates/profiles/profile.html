@@ -162,18 +162,31 @@ Profile{%endblock %} {% block content %}
             </tbody>
           </table>
         </div>
-        <a
-          href="{% url 'edit_profile' %}"
-          class="btn btn-outline-black float-right shown-button"
-        >
-          Edit Profile
-        </a>
-        <a
-          href="{% url 'account_change_password' %}"
-          class="btn btn-black float-right shown-button"
-        >
-          Change Password
-        </a>
+        <div id="profile-buttons">
+          <a
+            href="{% url 'edit_profile' %}"
+            class="btn btn-outline-black float-right shown-button"
+          >
+            Edit Profile
+          </a>
+          <a
+            href="{% url 'account_change_password' %}"
+            class="btn btn-black float-right shown-button"
+          >
+            Change Password
+          </a>
+          {% if request.user.is_superuser %}
+          <div class="google-btn shown-button" id="link-to-gsheets">
+            <a title="Link to Google Sheets"
+              href="{% url 'gsheets_authorize' %}">
+              <div class="google-icon-wrapper">
+                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+              </div>
+              <p class="btn-text"><b>Sync with G-Sheets</b></p>
+            </a>
+          </div>
+          {% endif %}
+        </div>
       </div>
       <div class="col-12 col-lg-6">
         <h5 class="text-muted">Order History</h5>
@@ -221,18 +234,31 @@ Profile{%endblock %} {% block content %}
             </tbody>
           </table>
         </div>
-        <a
-          href="{% url 'edit_profile' %}"
-          class="btn btn-outline-black float-right hidden-button"
-        >
-          Edit Profile
-        </a>
-        <a
-          href="{% url 'account_change_password' %}"
-          class="btn btn-black float-right hidden-button"
-        >
-          Change Password
-        </a>
+        <div id="profile-buttons">
+          <a
+            href="{% url 'edit_profile' %}"
+            class="btn btn-outline-black float-right hidden-button"
+          >
+            Edit Profile
+          </a>
+          <a
+            href="{% url 'account_change_password' %}"
+            class="btn btn-black float-right hidden-button"
+          >
+            Change Password
+          </a>
+          {% if request.user.is_superuser %}
+          <div class="google-btn hidden-button" id="link-to-gsheets">
+            <a title="Link to Google Sheets"
+              href="{% url 'gsheets_authorize' %}">
+              <div class="google-icon-wrapper">
+                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+              </div>
+              <p class="btn-text"><b>Sync with G-Sheets</b></p>
+            </a>
+          </div>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

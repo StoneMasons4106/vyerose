@@ -121,35 +121,33 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 * First Time Visitor Goals:
     * Easily understand the purpose of the site.
-        * Result:
+        * Result: The home page, sections at the top of the page, and the about section make it easy for the user to understand the premise of the site.
     * Quickly learn how to navigate the site and make sure it is intuitively accessible for first time users.
-        * Result:
+        * Result: Intuitive design of the header with dropdowns make it very easy for users to peruse the entire site with ease.
     * Visually appealing to have a pleasant first experience.
-        * Result:
+        * Result: Bootstrap template styling with uniform colors and carousel images make it pleasing to the eye.
     * Be able to quickly browse products to quickly determine interest.
-        * Result:
+        * Result: The products section is easily available, users can scroll through, and filter queries to find what they'd like. 
     * Be able to contact the owner of the store if I have any questions.
-        * Result:
+        * Result: The contact page is fully operational with an email form and the owner's business line.
 
 * Returning Visitor Goals:
     * Be able to login/register so information can be saved, and chekout is expedient.
-        * Result:
+        * Result: Users can login and edit their information so that information can be pulled at checkout.
     * Be able to login with my Google account so creating an account is painless.
-        * Result:
+        * Result: Google SSO is enabled through django-allauth.
     * Have items that I my have in my cart still be there when I return.
-        * Result:
+        * Result: Cart model is created such that if a user is logged in while shopping, it saves in the database so they can return later. If not logged in, it defaults to storing in the session data.
 
 * Frequent User Goals:
     * Be able to save my delivery information so that I don't have to re-enter every time I order.
-        * Result:
+        * Result: Delivery information can be saved at checkout or in their profile so checkout is expedient.
     * See my order history to see what I have already bought.
-        * Result:
+        * Result: Order history is visible on the profile page, users can click into them to see what they've bought.
     * Have the option to custom order if I want to change something to a particular product.
-        * Result:
+        * Result: Custom notes are built into the order page if the user wants to customize any part of their order.
 
 ### Further Testing
-
-
 
 ### Known Bugs
 
