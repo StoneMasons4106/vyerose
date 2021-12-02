@@ -154,7 +154,6 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 * As a result of the VyeRose app responsible for sending data to Google Sheets being unverified, the OAuth refresh token is not refreshing after 7 days as expected.
     * Verification request has been submitted through Google and the app now reads as In Production, but we will see if manual refreshing of the OAuth token is needed until the app is verified.
     * Not a code issue, looks to be something that has to be allowed from Google's side.
-
     
 ## Deployment
 

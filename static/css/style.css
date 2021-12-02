@@ -277,8 +277,14 @@
     font-weight: 400;
 }
 
-#default-delivery-information {
+#default-delivery-information,
+.password_change,
+#link-to-gsheets {
     margin-top: 10px;
+}
+
+#link-to-gsheets {
+    vertical-align: bottom;
 }
 
 
@@ -334,5 +340,11 @@
 @media screen and (min-width: 992px) {
     .hidden-button {
         display: none;
+    }
+}
+
+@media screen and (max-width: 361px) {
+    #profile-change-password {
+        margin-top: 10px;
     }
 }

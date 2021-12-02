@@ -19,7 +19,6 @@ def update_on_delete(sender, instance, **kwargs):
     """
     instance.order.update_total()
 
-
 @receiver(post_save, sender=Order)
 def update_order_on_save(sender, instance, created, **kwargs):
     """
@@ -29,7 +28,6 @@ def update_order_on_save(sender, instance, created, **kwargs):
     if created:
         pass
     else:
-        
         try:
             if instance.order_progress.friendly_name == 'Shipped' and instance.courier != None and instance.tracking_number != None:
                 
