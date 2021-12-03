@@ -108,14 +108,21 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
     * Django is the Python framework that this project was built on.
 
 9. [Allauth](https://django-allauth.readthedocs.io/en/latest/)
-    * Allauth is used for the authentication models for this project.
+    * Allauth is used for the authentication models, and SSO for this project.
 
 10. [Django-GSheets](https://github.com/olliebreeden/django-gsheets/tree/patch-1)
     * A forked branch of django-gsheets was used for Google Sheet integration which coerces all data in a model to a string so it can be passed to the sheet.
 
+11. [Postgres SQL](https://www.postgresql.org/)
+    * Django uses a relational database system by default, and Heroku has a free Postgres extension to add on to any app.
+
 ## Testing
 
-The W3C Markup Validator and W3C CSS Validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to validate every page of the project, and all JS code to ensure there were no major syntax errors in the project.
+
+[W3C Markup Validator](https://validator.w3.org/)
+[W3C CSS Validator](http://jigsaw.w3.org/css-validator/)
+[JSHint](https://jshint.com/)
 
 ### Testing User Stories from UX Section
 
@@ -149,11 +156,25 @@ The W3C Markup Validator and W3C CSS Validator Services were used to validate ev
 
 ### Further Testing
 
+* The site was tested on a variety of devices from desktop to mobile to tablet. Other devices were simulated through Chrome dev tools.
+
+* Lighthouse was used to test the pages of this site.
+    * The weak point is mobile performance, which hovers between 55 and 59. However desktop performance sits above 80.
+    * Every other category consistently tests above 70, and best practices and SEO rank 85 or higher in any platform or page.
+
+* Home Page:
+    * The home page's design was taken from the MeFamily home page, and altered for this site.
+    * The site's logo is changed to VyeRose's, and the headers are intuitive so as to facilitate ease of user navigation.
+    * The carousel's images are pulled from the AWS S3 bucket. Replacing the pictures is as easy as getting rid of one picture, and naming the new file the same as the old.
+    * The home page text is actually done through a basic model which is just labeled Home Text Fields.
+        * This allows the owner to change the text without changing base code.
+        * If left blank, the view returns an empty string, avoiding an error and breaking the site if nothing is found.
+
+* Contact Page:
+
 ### Known Bugs
 
-* As a result of the VyeRose app responsible for sending data to Google Sheets being unverified, the OAuth refresh token is not refreshing after 7 days as expected.
-    * Verification request has been submitted through Google and the app now reads as In Production, but we will see if manual refreshing of the OAuth token is needed until the app is verified.
-    * Not a code issue, looks to be something that has to be allowed from Google's side.
+* None as of writing this.
     
 ## Deployment
 
