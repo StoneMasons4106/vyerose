@@ -36,7 +36,8 @@ class UserProfileForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        exclude = ('password', 'last_login', 'is_superuser', 'is_staff', 'is_active', 'date_joined', 'groups', 'user_permissions',)
+        exclude = ('password', 'last_login', 'is_superuser', 'is_staff', 
+        'is_active', 'date_joined', 'groups', 'user_permissions',)
 
     def __init__(self, *args, **kwargs):
         """

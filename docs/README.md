@@ -121,7 +121,9 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to validate every page of the project, and all JS code to ensure there were no major syntax errors in the project.
 
 [W3C Markup Validator](https://validator.w3.org/)
+
 [W3C CSS Validator](http://jigsaw.w3.org/css-validator/)
+
 [JSHint](https://jshint.com/)
 
 ### Testing User Stories from UX Section
@@ -168,6 +170,8 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * Transform was used in its place, and tested.
 
 * Home Page:
+    * Models Used:
+        * Text Fields
     * The home page's design was taken from the MeFamily home page, and altered for this site.
     * The site's logo is changed to VyeRose's, and the headers are intuitive so as to facilitate ease of user navigation.
     * The carousel's images are pulled from the AWS S3 bucket. Replacing the pictures is as easy as getting rid of one picture, and naming the new file the same as the old.
@@ -176,12 +180,17 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * If left blank, the view returns an empty string, avoiding an error and breaking the site if nothing is found.
 
 * Contact Page:
+    * Models Used:
+        * Contact Fields
     * The contact page's design was taken from the MeFamily contact page, and altered for this site.
     * The contact model allows the owner of the site to be able to edit the Google embed, the street address, contact email, and phone number.
         * This allows the owner of the site to change the content without editing base code.
     * The contact email process was tested and verified, it uses EmailMessage, from the django.core.mail module to send emails.
 
 * Product Page(s):
+    * Models Used:
+        * Categories
+        * Products
     * The product page templates, basic layout, and logic were mainly repurposed from the Boutique Ado sample project, with some minor changes.
         * Sizing due to the type of products being sold on this site was irrelevant, so it was removed from all models and templates.
     * Reading through Django's documentation, I build a basic template tag that would return all Categories of Products to each page.
@@ -190,15 +199,58 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
     * Minor style change to make sure a line doesn't show up at the bottom of the page if a Category only has 4 items.
 
 * Profile Page(s):
-
+    * Models Used:
+        * User Profiles
+        * Orders
+        * Users
+    * The profile page templates, basic layout, and logic were mainly repurposed from the Boutique Ado sample project, with some minor changes.
+        * The main profile page is no longer a form, but tables with the proper values, from the profiles model AND the users model.
+        * Users are given the option to edit their profile, or change their password on the profile page, as well as view their order history.
+        * All of this functionality has been tested and verified.
+    * I also added the functionality to change the email associated with an account by sending a verification email to the new email on file.
+        * The only minor bug in this project is related to this feature and is documented in the bugs section.
 
 * Cart:
+    * Models Used:
+        * User Carts
+    * The cart page templates, basic layout, and logic were mainly repurposed from the Boutique Ado sample project, with some minor changes.
+        * The cart app now has a model associated with it that tracks the data in a given cart if a user is logged in.
+        * This allows users to log back in and pick up shopping where they left off.
+        * If the user isn't logged in, it defaults to storing back in session data where Boutique Ado stored the data.
+        * All functionalities here have been tested and verified.
+    * I also added a template tag that returns the grand total of the cart of a given user to the home page to be displayed next to the cart.
 
 
 * Checkout:
+    * Models Used:
+        * Orders
+        * User Cart
+        * Products
+        * User Profiles
+    * The checkout page templates, basic layout, and logic were mainly repurposed from the Boutique Ado sample project, with some minor changes.
+        * I added a custom notes field to the orders model, and it's available to the user during checkout.
+        * Added sales tax to calculations which for New York State, is 8.75%.
+            * This is changeable at any time in the settings.py file.
+        * Live emails send out to the consumer that their order was submitted and gives them a summary of the order.
+        * A copy of that information is also sent to the store order to notify them of a new order.
+        * All functionalities here have been tested and verified.
+    * Stripe integration is put together currently with test keys and a test webhook so payments can be run on test cards.
+        * Functionality is tested and verified, payments show as processing. 
 
 
 * Authentication Page(s):
+    * Models Used:
+        * Groups
+        * Users
+        * Email Addresses
+        * Social Accounts
+    * The logic for authentication is dictated by django-allauth, an extensive library that automates this process and handles account management.
+    * The appearance of each allauth page was changed to mimic the style of the site and to stay uniform.
+    * SSO was implemented through the use of signing in through Google as supported by allauth.
+    * All functionalities were tested and verified.
+
+
+* Google Sheets Integration:
 
 ### Known Bugs
 
