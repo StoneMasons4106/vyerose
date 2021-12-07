@@ -1,7 +1,17 @@
 /* Header - templates/base.html */
 
+header {
+    height: 109px;
+}
+
+#navbar,
 .logo img {
-    zoom: 200%;
+    margin-top: 16px;
+}
+
+.logo img {
+    transform: scale(2.0);
+    margin-left: 40px;
 }
 
 .fa-shopping-cart {

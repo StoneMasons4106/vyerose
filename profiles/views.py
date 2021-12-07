@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm, UserForm
 from django.contrib.auth.models import User
-from products.models import Category
 from allauth.account.models import EmailAddress
 
 from checkout.models import Order
@@ -37,9 +36,9 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
         form_two = UserForm(instance=user)
-
-    orders = profile.orders.all()
-
+    
+    orders = profile.orders.all() 
+    
     template = 'profiles/profile.html'
     context = {
         'page': 'profile',

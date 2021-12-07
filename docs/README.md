@@ -157,10 +157,15 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
 ### Further Testing
 
 * The site was tested on a variety of devices from desktop to mobile to tablet. Other devices were simulated through Chrome dev tools.
+    * Custom JS was written to ensure proper positioning of the footer for all devices and window sizes.
 
 * Lighthouse was used to test the pages of this site.
     * The weak point is mobile performance, which hovers between 55 and 59. However desktop performance sits above 80.
     * Every other category consistently tests above 70, and best practices and SEO rank 85 or higher in any platform or page.
+
+* Browsers used to test include Chrome, Edge, Safari, Opera, and Firefox.
+    * A slight change to my CSS had to be made due to Firefox not supporting the zoom attribute.
+        * Transform was used in its place, and tested.
 
 * Home Page:
     * The home page's design was taken from the MeFamily home page, and altered for this site.
@@ -171,10 +176,35 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * If left blank, the view returns an empty string, avoiding an error and breaking the site if nothing is found.
 
 * Contact Page:
+    * The contact page's design was taken from the MeFamily contact page, and altered for this site.
+    * The contact model allows the owner of the site to be able to edit the Google embed, the street address, contact email, and phone number.
+        * This allows the owner of the site to change the content without editing base code.
+    * The contact email process was tested and verified, it uses EmailMessage, from the django.core.mail module to send emails.
+
+* Product Page(s):
+    * The product page templates, basic layout, and logic were mainly repurposed from the Boutique Ado sample project, with some minor changes.
+        * Sizing due to the type of products being sold on this site was irrelevant, so it was removed from all models and templates.
+    * Reading through Django's documentation, I build a basic template tag that would return all Categories of Products to each page.
+        * This allows for dynamic product menus and quick filtering for specific types of products.
+    * Adding a product, editing products, and deleting products have all been tested and verified working.
+    * Minor style change to make sure a line doesn't show up at the bottom of the page if a Category only has 4 items.
+
+* Profile Page(s):
+
+
+* Cart:
+
+
+* Checkout:
+
+
+* Authentication Page(s):
 
 ### Known Bugs
 
-* None as of writing this.
+* Upon changing the email address in the profile, a confirmation email is sent. If the user attempts to change the email again, an error message is returned saying the user needs to confirm the prior email first.
+    * On the profile page when this happens, the email address is the one the user just entered, not the one that needs verified.
+    * Upon reloading the page, this corrects itself with the proper data.
     
 ## Deployment
 
