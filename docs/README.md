@@ -251,12 +251,22 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
 
 
 * Google Sheets Integration:
+    * Models Used:
+        * Access Credentials
+    * The integration was built using a library called django-gsheets.
+    * The base library was limited as to what data could exactly be pushed to Google Sheets, so I found a fork that coerces all data to a string.
+    * After going through the verification process to get permanent access to the spreadsheets scope, every order not only posts in the database, but also posts in Google Sheets for the owner to see and manipulate to make business easier to track.
+    * The verification process was necessary, as unverified projects using sensitive scopes don't automatically have tokens that refresh every week and keep them authenticated.
+    * All functionalities were tested and verified.
 
 ### Known Bugs
 
 * Upon changing the email address in the profile, a confirmation email is sent. If the user attempts to change the email again, an error message is returned saying the user needs to confirm the prior email first.
     * On the profile page when this happens, the email address is the one the user just entered, not the one that needs verified.
     * Upon reloading the page, this corrects itself with the proper data.
+* The footer positioning script adjusts smaller windows going to bigger windows well, but it doesn't adjust the converse very well.
+    * This fixes itself on page reload, and most people won't be changing their window size that drastically.
+    * On page load, every device size looks as it should.
     
 ## Deployment
 
