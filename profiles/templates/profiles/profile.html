@@ -163,18 +163,29 @@ Profile{%endblock %} {% block content %}
           </table>
         </div>
         <div id="profile-buttons">
+          {% if social_account %}
+          <a
+            href="{% url 'edit_profile' %}"
+            class="btn btn-black float-right shown-button"
+          >
+            Edit Profile
+          </a>
+          {% else %}
           <a
             href="{% url 'edit_profile' %}"
             class="btn btn-outline-black float-right shown-button"
           >
             Edit Profile
           </a>
+          {% endif %}
+          {% if not social_account %}
           <a
             href="{% url 'account_change_password' %}"
             class="btn btn-black float-right shown-button"
           >
             Change Password
           </a>
+          {% endif %}
           {% if request.user.is_superuser %}
           <div class="google-btn shown-button" id="link-to-gsheets">
             <a title="Link to Google Sheets"
@@ -189,7 +200,7 @@ Profile{%endblock %} {% block content %}
         </div>
       </div>
       <div class="col-12 col-lg-6">
-        <h5 class="text-muted">Order History</h5>
+        <h5 class="text-muted" id="order-history">Order History</h5>
         <div class="order-history table-responsive">
           <table class="table table-sm table-borderless">
             {% if orders %}
@@ -235,12 +246,22 @@ Profile{%endblock %} {% block content %}
           </table>
         </div>
         <div id="profile-buttons">
+          {% if social_account %}
+          <a
+            href="{% url 'edit_profile' %}"
+            class="btn btn-black float-right hidden-button"
+          >
+            Edit Profile
+          </a>
+          {% else %}
           <a
             href="{% url 'edit_profile' %}"
             class="btn btn-outline-black float-right hidden-button"
           >
             Edit Profile
           </a>
+          {% endif %}
+          {% if not social_account %}
           <a
             href="{% url 'account_change_password' %}"
             class="btn btn-black float-right hidden-button"
@@ -248,6 +269,7 @@ Profile{%endblock %} {% block content %}
           >
             Change Password
           </a>
+          {% endif %}
           {% if request.user.is_superuser %}
           <div class="google-btn hidden-button" id="link-to-gsheets">
             <a title="Link to Google Sheets"

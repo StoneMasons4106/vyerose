@@ -5,7 +5,7 @@ from .models import UserProfile
 from .forms import UserProfileForm, UserForm
 from django.contrib.auth.models import User
 from allauth.account.models import EmailAddress
-
+from allauth.socialaccount.models import SocialAccount
 from checkout.models import Order
 
 
@@ -14,6 +14,11 @@ def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
     user = get_object_or_404(User, username=request.user)
+    
+    try:
+        social_account = get_object_or_404(SocialAccount, user_id=request.user)
+    except:
+        social_account = False
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -46,6 +51,7 @@ def profile(request):
         'user': user,
         'orders': orders,
         'on_profile_page': True,
+        'social_account': social_account,
     }
 
     return render(request, template, context)

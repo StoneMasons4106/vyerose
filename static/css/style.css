@@ -349,6 +349,10 @@ header {
     .shown-button {
         display: none;
     }
+
+    #order-history {
+        margin-top: 10px;
+    }
 }
 
 @media screen and (min-width: 992px) {
