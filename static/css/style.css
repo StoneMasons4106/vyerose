@@ -196,6 +196,14 @@ header {
     margin-bottom: 16px;
 }
 
+.social-signup input {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+}
+
+.social-signup p {
+    margin: 0px 0px;
+}
 
 /* Bootstrap Toasts */
 
