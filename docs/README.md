@@ -59,7 +59,7 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 * **Google Sheets Integration** - When an order is created, the order information from the Order Model gets pushed to a Google Sheet for the owner of the store to keep track of.
 
-* **Google SSO** - Allauth supports signing in and creating an account through your own Google account.
+* **SSO** - Allauth supports signing in and creating an account through many providers, I implemented Google and Facebook.
 
 * **Contact Page** - Allows end users to send emails and questions to the store owner for easy correspondence.
 
@@ -144,7 +144,7 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
     * Be able to login/register so information can be saved, and chekout is expedient.
         * Result: Users can login and edit their information so that information can be pulled at checkout.
     * Be able to login with my Google account so creating an account is painless.
-        * Result: Google SSO is enabled through django-allauth.
+        * Result: Google and Facebook SSO is enabled through django-allauth.
     * Have items that I my have in my cart still be there when I return.
         * Result: Cart model is created such that if a user is logged in while shopping, it saves in the database so they can return later. If not logged in, it defaults to storing in the session data.
 
@@ -246,7 +246,7 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * Social Accounts
     * The logic for authentication is dictated by django-allauth, an extensive library that automates this process and handles account management.
     * The appearance of each allauth page was changed to mimic the style of the site and to stay uniform.
-    * SSO was implemented through the use of signing in through Google as supported by allauth.
+    * SSO was implemented through the use of signing in through Google and Facebook as supported by allauth.
     * All functionalities were tested and verified.
 
 
