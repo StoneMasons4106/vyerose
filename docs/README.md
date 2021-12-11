@@ -61,6 +61,8 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 * **SSO** - Allauth supports signing in and creating an account through many providers, I implemented Google and Facebook.
 
+* **2 Factor Authentication** - Django-allauth-2fa supports 2 factor authentication through authentication apps like Google Authenticator.
+
 * **Contact Page** - Allows end users to send emails and questions to the store owner for easy correspondence.
 
 * **Cart Model** - Allows users that are registered with the site to have their cart data stored for easy access if they leave the site and log back in.
@@ -115,6 +117,9 @@ For inspiration, I looked at a number of [Bootstrap Templates](https://bootstrap
 
 11. [Postgres SQL](https://www.postgresql.org/)
     * Django uses a relational database system by default, and Heroku has a free Postgres extension to add on to any app.
+
+12. [Allauth 2FA](https://github.com/valohai/django-allauth-2fa)
+    * Adds 2 factor authentication to django-allauth.
 
 ## Testing
 
@@ -247,7 +252,8 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
     * The logic for authentication is dictated by django-allauth, an extensive library that automates this process and handles account management.
     * The appearance of each allauth page was changed to mimic the style of the site and to stay uniform.
     * SSO was implemented through the use of signing in through Google and Facebook as supported by allauth.
-    * All functionalities were tested and verified.
+    * 2 Factor authentication was implemented through used of django-allauth-2fa.
+    * All functionalities were tested and verified, including using social account with 2 factor authentication.
 
 
 * Google Sheets Integration:

@@ -1,0 +1,57 @@
+{% extends "allauth/account/base.html" %}
+{% load i18n %}
+
+{% block extra_title %}Backup Tokens{% endblock %}
+
+{% block inner_content %}
+<div id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Backup Tokens</h2>
+          <ol>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>Backup Tokens</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="allauth-form-inner-content generate-backup-tokens-content">
+
+            {% if backup_tokens %}
+            {% if reveal_tokens %}
+                <ul>
+                {% for token in backup_tokens %}
+                    <li>{{ token.token }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                {% trans 'Backup tokens have been generated, but are not revealed here for security reasons. Press the button below to generate new ones.' %}
+            {% endif %}
+            {% else %}
+            {% trans 'No tokens. Press the button below to generate some.' %}
+            {% endif %}
+
+            <form method="post" class="generate-backup-tokens">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-black">
+                    {% trans 'Generate Backup Tokens' %}
+                </button>
+            </form>
+
+            <a href="{% url 'two-factor-remove' %}" class="btn-blue disable-two-factor">Disable Two Factor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+{% endblock %}

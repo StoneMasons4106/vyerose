@@ -122,6 +122,7 @@
             <ul>
               {% if request.user.is_authenticated %}
                 <li><a href="{% url 'me' %}" class="dropdown-item">My Account</a></li>
+                <li><a href="{% url 'two-factor-setup' %}" class="dropdown-item">2 Factor Authentication</a></li>
                 {% if request.user.is_superuser %}
                   <li><a href="{% url 'admin:index' %}" class="dropdown-item">Site Management</a></li>
                 {% endif %}

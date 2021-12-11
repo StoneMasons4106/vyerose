@@ -206,6 +206,27 @@ header {
     margin: 0px 0px;
 }
 
+#two-factor-setup-step-one,
+.generate-backup-tokens-content {
+    margin-top: 10px;
+}
+
+.two-factor-setup-verify-token-form {
+    margin-bottom: 20px;
+}
+
+.two-factor-setup-verify-token-button {
+    margin-top: 20px;
+}
+
+.disable-two-factor {
+    color: white !important;
+}
+
+.generate-backup-tokens {
+    margin-bottom: 20px;
+}
+
 /* Bootstrap Toasts */
 
 .message-container {
@@ -279,6 +300,7 @@ header {
 .breadcrumbs {
     margin-top: 109px !important;
     width: 100% !important;
+    top: 0;
 }
 
 

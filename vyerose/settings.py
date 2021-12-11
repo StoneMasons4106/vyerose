@@ -53,6 +53,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_static',
+    'allauth_2fa',
     'crispy_forms',
     'storages',
     'home',
@@ -95,7 +99,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_otp.middleware.OTPMiddleware',
+    'allauth_2fa.middleware.AllauthTwoFactorMiddleware',
 ]
+
+ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
 
 ROOT_URLCONF = 'vyerose.urls'
 

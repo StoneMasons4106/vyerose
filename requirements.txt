@@ -29,3 +29,5 @@ google-api-python-client==1.12.8
 google-auth-oauthlib==0.4.2
 six==1.16.0
 googledrivedownloader==0.4
+django-otp==1.1.3
+django-allauth-2fa==0.8

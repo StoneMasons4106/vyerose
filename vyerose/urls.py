@@ -25,6 +25,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('profiles/', include('profiles.urls')),
     path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth_2fa.urls')),
     path('', include('gsheets.urls')),
     path('cart/', include('cart.urls')),
     path('checkout/', include('checkout.urls')),
