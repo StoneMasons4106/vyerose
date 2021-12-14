@@ -225,7 +225,6 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * All functionalities here have been tested and verified.
     * I also added a template tag that returns the grand total of the cart of a given user to the home page to be displayed next to the cart.
 
-
 * Checkout:
     * Models Used:
         * Orders
@@ -240,8 +239,9 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
         * A copy of that information is also sent to the store order to notify them of a new order.
         * All functionalities here have been tested and verified.
     * Stripe integration is put together currently with test keys and a test webhook so payments can be run on test cards.
-        * Functionality is tested and verified, payments show as processing. 
-
+        * Functionality is tested and verified, payments show as processing.
+    * Order Progress, courier information, and tracking number implemented so when an order is shipped, has a courier, and has a tracking number, a confirmation will send to the customer with the order information and tracking information.
+        * Functionality is tested and verified.
 
 * Authentication Page(s):
     * Models Used:
@@ -254,7 +254,6 @@ I used the W3C Markup Validator, W3C CSS Validator Services, and JSHint to valid
     * SSO was implemented through the use of signing in through Google and Facebook as supported by allauth.
     * 2 Factor authentication was implemented through used of django-allauth-2fa.
     * All functionalities were tested and verified, including using social account with 2 factor authentication.
-
 
 * Google Sheets Integration:
     * Models Used:
