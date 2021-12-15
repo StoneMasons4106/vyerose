@@ -37,7 +37,11 @@ def send_message(request):
         email = EmailMessage(f'You have a new message from {name}', 
         f'You have a new email from { name }!\n\nEmail: { user_email }\n\nSubject: { subject }\n\nMessage: { message }',
         to=[to_email])
-        email.send()
-        messages.success(request, 'Your message has been sent!')
+        
+        try:
+            email.send()
+            messages.success(request, 'Your message has been sent!')
+        except:
+            messages.error(request, 'Your message could not be sent right now. Please try again later.')
 
         return redirect('contact')
