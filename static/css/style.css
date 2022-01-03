@@ -326,11 +326,13 @@ header {
 
 #default-delivery-information,
 .password_change,
-#link-to-gsheets {
+#profile-delete {
     margin-top: 10px;
 }
 
 #link-to-gsheets {
+    margin-top: 10px;
+    margin-bottom: 0px !important;
     vertical-align: bottom;
 }
 
@@ -394,8 +396,20 @@ header {
     }
 }
 
+@media screen and (max-width: 409) {
+    #profile-delete-link {
+        margin-top: 10px;
+    }
+}
+
 @media screen and (max-width: 361px) {
     #profile-change-password {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    #profile-delete-link {
         margin-top: 10px;
     }
 }
