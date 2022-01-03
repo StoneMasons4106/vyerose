@@ -186,6 +186,13 @@ Profile{%endblock %} {% block content %}
             Change Password
           </a>
           {% endif %}
+          <a
+            href="{% url 'delete_profile' %}"
+            class="btn btn-danger shown-button"
+            id="profile-delete"
+          >
+            Delete Profile
+          </a>
           {% if request.user.is_superuser %}
           <div class="google-btn shown-button" id="link-to-gsheets">
             <a title="Link to Google Sheets"
@@ -270,6 +277,13 @@ Profile{%endblock %} {% block content %}
             Change Password
           </a>
           {% endif %}
+          <a
+            href="{% url 'delete_profile' %}"
+            class="btn btn-danger hidden-button"
+            id="profile-delete"
+          >
+            Delete Profile
+          </a>
           {% if request.user.is_superuser %}
           <div class="google-btn hidden-button" id="link-to-gsheets">
             <a title="Link to Google Sheets"

@@ -60,7 +60,8 @@ header {
     color: white;
 }
 
-.btn-outline-black {
+.btn-outline-black,
+.btn-danger {
     padding: 9px 29px !important;
     border-radius: 4px !important;
 }
