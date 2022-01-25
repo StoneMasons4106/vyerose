@@ -27,16 +27,29 @@
     <div class="container-fluid product-container">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container my-5">
-                    {% if product.image %}
-                        <a href="{{ product.image.url }}" target="_blank">
-                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        </a>
+                <div id="productCarousel" class="image-container my-5 carousel slide carousel-fade" data-bs-interval="5000" data-bs-ride="carousel">
+                    <ol class="carousel-indicators" id="product-carousel-indicators"></ol>
+                    <div class="carousel-inner" role="listbox">
+                        {% if product.image %}
+                            <img class="card-img-top img-fluid carousel-item active" src="{{ product.image.url }}" alt="{{ product.name }}">
                         {% else %}
-                        <a href="">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                        </a>
-                    {% endif %}
+                            <img class="card-img-top img-fluid carousel-item active" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        {% endif %}
+                        {% if product.image_two %}
+                            <img class="card-img-top img-fluid carousel-item" src="{{ product.image_two.url }}" alt="{{ product.name }}">
+                        {% endif %}
+                        {% if product.image_three %}
+                            <img class="card-img-top img-fluid carousel-item" src="{{ product.image_three.url }}" alt="{{ product.name }}">
+                        {% endif %}
+                    </div>
+                    
+                    <a class="carousel-control-prev" href="#productCarousel" role="button" data-bs-slide="prev" onclick="$('#productCarousel').carousel('prev')">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+            
+                    <a class="carousel-control-next" href="#productCarousel" role="button" data-bs-slide="next" onclick="$('#productCarousel').carousel('next')">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
